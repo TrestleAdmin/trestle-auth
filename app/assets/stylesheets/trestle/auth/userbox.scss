@@ -1,0 +1,49 @@
+@import "trestle/support";
+
+.userbox {
+  margin-top: 2px;
+  margin-bottom: 2px;
+
+  > a {
+    color: $text-color;
+
+    display: block;
+    padding: 2px 0;
+
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 40px;
+
+    &:hover, &:focus {
+      text-decoration: none;
+    }
+  }
+
+  .avatar {
+    vertical-align: top;
+    margin-left: 6px;
+  }
+
+  .name {
+    color: $text-color;
+  }
+}
+
+@include mobile {
+  .userbox {
+    position: relative;
+    z-index: 5;
+
+    > a, .name {
+      color: white;
+    }
+
+    .name {
+      display: none;
+    }
+
+    .avatar {
+      border: 1px solid rgba(white, 0.25);
+    }
+  }
+}

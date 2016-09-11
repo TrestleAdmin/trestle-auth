@@ -1,0 +1,25 @@
+<%= form_tag "", class: "login-form" do %>
+  <% if flash[:error] -%>
+    <div class="alert alert-danger">
+      <p><%= flash[:error] %></p>
+    </div>
+  <% end -%>
+
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+      <%= text_field_tag :email, "", placeholder: "Email", class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+      <%= password_field_tag :password, "", placeholder: "Password", class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= submit_tag "Login", class: "btn btn-primary btn-block" %>
+  </div>
+<% end %>

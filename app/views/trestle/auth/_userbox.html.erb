@@ -1,0 +1,19 @@
+<div class="userbox pull-right dropdown">
+  <%= link_to "#", class: 'dropdown-toggle', data: { toggle: 'dropdown' } do %>
+    <span class="name">
+      <%= current_user.first_name %>
+      <strong><%= current_user.last_name %></strong>
+
+      <span class="caret"></span>
+    </span>
+
+    <%= gravatar(current_user.email) %>
+  <% end %>
+
+  <ul class="dropdown-menu dropdown-menu-right">
+    <% if Trestle.config.auth.user_admin -%>
+      <li><%= link_to "My Account", Trestle.config.auth.user_admin.path(:show, id: current_user), class: "dropdown-item" %></li>
+    <% end -%>
+    <li><%= link_to "Log out", trestle.logout_path, class: "dropdown-item" %></li>
+  </ul>
+</div>

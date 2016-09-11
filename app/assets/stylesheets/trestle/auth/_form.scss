@@ -1,0 +1,110 @@
+a {
+  color: rgba(white, 0.75);
+  &:hover { color: white; }
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.remember-me {
+  display: block;
+  font-weight: normal;
+  color: rgba(white, 0.75);
+  background: rgba(black, 0.1);
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 13px;
+  cursor: pointer;
+
+  input {
+    margin-right: 10px;
+  }
+
+  &:hover {
+    background: rgba(black, 0.15);
+  }
+}
+
+.form-control, .input-group-addon {
+  background: rgba(white, 0.1);
+  border: none;
+}
+
+.form-control {
+  box-shadow: none;
+
+  color: white;
+
+  height: auto;
+  padding: 12px 5px;
+
+  font-size: 16px;
+
+  &:focus {
+    outline-color: transparent;
+    outline-style: none;
+    box-shadow: none;
+  }
+
+  &::placeholder {
+    color: rgba(white, 0.5);
+  }
+
+  &:-webkit-autofill {
+    -webkit-text-fill-color: white;
+
+    &, &:hover, &:focus, &:active {
+      transition: background-color 9999999s ease-in-out 0s;
+    }
+  }
+}
+
+.input-group-addon {
+  color: rgba(white, 0.5);
+
+  &:first-child {
+    padding-right: 5px;
+  }
+}
+
+.btn {
+  box-shadow: rgba(black, 0.1) 0 0 2px;
+  padding: 12px;
+  font-size: 16px;
+}
+
+.btn-primary {
+  outline: none;
+
+  &:hover {
+    background-color: darken($btn-primary-bg, 2.5%);
+    border-color: darken($btn-primary-border, 5%);
+  }
+
+  &:focus, &:active {
+    background-color: darken($btn-primary-bg, 5%);
+    border-color: darken($btn-primary-border, 10%);
+  }
+
+  &:active:focus {
+    outline: none !important;
+    background-color: darken($btn-primary-bg, 10%);
+    border-color: darken($btn-primary-border, 15%);
+  }
+}
+
+.form-footer {
+  font-size: 12px;
+}
+
+.forgot-password {
+  float: right;
+  padding: 10px 5px;
+}
+
+.alert-danger {
+  background: $theme-bg-texture-url fixed, $alert-danger-text;
+  color: white;
+}
