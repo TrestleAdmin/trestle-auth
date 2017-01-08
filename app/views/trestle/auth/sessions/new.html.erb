@@ -8,7 +8,7 @@
   <div class="form-group">
     <div class="input-group">
       <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-      <%= text_field_tag :email, "", placeholder: "Email", class: "form-control" %>
+      <%= text_field_tag Trestle.config.auth.authenticate_with, "", placeholder: Trestle.config.auth.authenticate_with.to_s.humanize, class: "form-control" %>
     </div>
   </div>
 
