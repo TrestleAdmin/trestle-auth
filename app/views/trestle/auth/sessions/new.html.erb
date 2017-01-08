@@ -1,4 +1,6 @@
 <%= form_tag "", class: "login-form" do %>
+  <%= hook("auth.login.heading") %>
+
   <% if flash[:error] -%>
     <div class="alert alert-danger">
       <p><%= flash[:error] %></p>
@@ -18,6 +20,8 @@
       <%= password_field_tag :password, "", placeholder: "Password", class: "form-control" %>
     </div>
   </div>
+
+  <%= hook("auth.login.form") %>
 
   <div class="form-group">
     <%= submit_tag "Login", class: "btn btn-primary btn-block" %>
