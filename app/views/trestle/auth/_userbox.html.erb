@@ -1,9 +1,7 @@
 <div class="userbox pull-right dropdown">
   <%= link_to "#", class: 'dropdown-toggle', data: { toggle: 'dropdown' } do %>
     <span class="name">
-      <%= current_user.first_name %>
-      <strong><%= current_user.last_name %></strong>
-
+      <%= format_user_name(current_user) %>
       <span class="caret"></span>
     </span>
 
