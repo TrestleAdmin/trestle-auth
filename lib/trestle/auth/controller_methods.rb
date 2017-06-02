@@ -28,11 +28,11 @@ module Trestle
       end
 
       def store_location
-        session[:return_to] = request.fullpath
+        session[:trestle_return_to] = request.fullpath
       end
 
       def previous_location
-        session.delete(:return_to)
+        session.delete(:trestle_return_to)
       end
 
       def require_authenticated_user
