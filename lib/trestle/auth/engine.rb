@@ -4,7 +4,7 @@ module Trestle
       config.assets.precompile << "trestle/auth.css" << "trestle/auth.js" << "trestle/auth/userbox.scss"
 
       initializer "trestle.auth.helpers" do
-        Trestle::ApplicationController.helper Trestle::Auth::Engine.helpers
+        Trestle::Engine.paths["app/helpers"].concat(paths["app/helpers"].existent)
       end
 
       config.to_prepare do
