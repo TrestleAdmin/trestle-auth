@@ -11,7 +11,7 @@ module Trestle
         end
 
         def inject_model_methods
-          inject_into_file "app/models/#{name.underscore}.rb", "  include Trestle::Auth::ModelMethods\n", before: /end/
+          inject_into_file "app/models/#{name.underscore}.rb", "  include Trestle::Auth::ModelMethods\n", before: /^end/
         end
       end
     end
