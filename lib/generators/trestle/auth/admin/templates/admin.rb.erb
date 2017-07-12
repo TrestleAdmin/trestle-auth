@@ -7,7 +7,7 @@ Trestle.resource(:<%= plural_name %>, model: Trestle.config.auth.user_class, sco
 
   table do
     column :avatar, header: false do |administrator|
-      gravatar(administrator.email)
+      avatar_for(administrator)
     end
     column :email, link: true
     column :first_name

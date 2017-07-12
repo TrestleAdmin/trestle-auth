@@ -17,6 +17,10 @@ module Trestle
           params[:password]
         )
       }
+
+      option :avatar, ->(user) {
+        gravatar(user.email)
+      }, evaluate: false
     end
   end
 end

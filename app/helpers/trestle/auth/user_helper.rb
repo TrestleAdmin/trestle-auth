@@ -6,4 +6,8 @@ module Trestle::Auth::UserHelper
       display(user)
     end
   end
+
+  def avatar_for(user)
+    avatar { instance_exec(user, &Trestle.config.auth.avatar) } if Trestle.config.auth.avatar
+  end
 end

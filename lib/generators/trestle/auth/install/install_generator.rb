@@ -36,6 +36,13 @@ module Trestle
               # config.authenticate = ->(params) {
               #   User.authenticate(params[:login], params[:password])
               # }
+
+              # Customize the rendering of user avatars. Can be disabled by setting to false.
+              # Defaults to the Gravatar based on the user's email address.
+              #
+              # config.avatar = ->(user) {
+              #   image_tag(user.avatar_url, alt: user.name)
+              # }
             RUBY
           end
         end
