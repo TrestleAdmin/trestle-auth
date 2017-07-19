@@ -33,14 +33,14 @@ module Trestle
               # Customize the method for authenticating a user given login parameters.
               # The block should return an instance of the auth user class, or nil.
               #
-              # config.authenticate = ->(params) {
+              # config.auth.authenticate = ->(params) {
               #   User.authenticate(params[:login], params[:password])
               # }
 
               # Customize the rendering of user avatars. Can be disabled by setting to false.
               # Defaults to the Gravatar based on the user's email address.
               #
-              # config.avatar = ->(user) {
+              # config.auth.avatar = ->(user) {
               #   image_tag(user.avatar_url, alt: user.name)
               # }
             RUBY
