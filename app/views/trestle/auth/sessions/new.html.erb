@@ -1,4 +1,4 @@
-<%= form_tag "", class: "login-form" do %>
+<%= form_tag login_path, class: "login-form" do %>
   <%= hook("auth.login.heading") %>
 
   <% if flash[:error] -%>
