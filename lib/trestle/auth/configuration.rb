@@ -21,6 +21,10 @@ module Trestle
       option :avatar, ->(user) {
         gravatar(user.email)
       }, evaluate: false
+
+      option :locale, ->(user) {
+        user.locale if user.respond_to?(:locale)
+      }
     end
   end
 end

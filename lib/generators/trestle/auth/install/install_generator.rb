@@ -43,6 +43,14 @@ module Trestle
               # config.auth.avatar = ->(user) {
               #   image_tag(user.avatar_url, alt: user.name)
               # }
+
+              # Customize the method for determining the user's locale.
+              # Defaults to user.locale (if the method is defined).
+              #
+              # config.auth.locale = ->(user) {
+              #   user.locale if user.respond_to?(:locale)
+              # }
+            }
             RUBY
           end
         end

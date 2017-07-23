@@ -5,7 +5,9 @@ module Trestle
 
       included do
         helper_method :current_user, :logged_in?
+
         before_action :require_authenticated_user
+        before_action :set_locale, if: :logged_in?
       end
 
     protected
@@ -43,6 +45,10 @@ module Trestle
         store_location
         redirect_to trestle.login_url
         false
+      end
+
+      def set_locale
+        self.locale = Trestle.config.auth.locale(current_user) || I18n.default_locale
       end
     end
   end
