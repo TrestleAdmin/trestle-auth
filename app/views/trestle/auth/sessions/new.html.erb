@@ -24,6 +24,6 @@
   <%= hook("auth.login.form") %>
 
   <div class="form-group">
-    <%= submit_tag "Login", class: "btn btn-primary btn-block" %>
+    <%= submit_tag t("admin.auth.login", default: "Login"), class: "btn btn-primary btn-block" %>
   </div>
 <% end %>
