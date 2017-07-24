@@ -7,7 +7,7 @@ module Trestle
         helper_method :current_user, :logged_in?
 
         before_action :require_authenticated_user
-        before_action :set_locale, if: :logged_in?
+        around_action :set_locale
       end
 
     protected
@@ -48,7 +48,10 @@ module Trestle
       end
 
       def set_locale
-        self.locale = Trestle.config.auth.locale(current_user) || I18n.default_locale
+        self.locale = Trestle.config.auth.locale(current_user) || I18n.default_locale if logged_in?
+        yield
+      ensure
+        self.locale = I18n.default_locale
       end
     end
   end
