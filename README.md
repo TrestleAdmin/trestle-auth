@@ -2,6 +2,8 @@
 
 > Authentication plugin for the Trestle admin framework
 
+<img src="https://trestle.io/images/Trestle-Auth.png" width="50%" />
+
 
 ## Getting Started
 
