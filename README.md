@@ -1,38 +1,27 @@
-# Trestle::Auth
+# Trestle Authentication (trestle-auth)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/trestle/auth`. To experiment with that code, run `bin/console` for an interactive prompt.
+> Authentication plugin for the Trestle admin framework
 
-TODO: Delete this and the text above, and describe your gem
 
-## Installation
+## Getting Started
 
-Add this line to your application's Gemfile:
+These instructions assume you have a working Trestle application. To integrate trestle-auth, first add it to your application's Gemfile:
 
 ```ruby
 gem 'trestle-auth'
 ```
 
-And then execute:
+Run `bundle install`, and then run the install generator to set up configuration options, user model and user admin resource.
 
-    $ bundle
+    $ rails generate trestle:auth:install
+    $ rake db:migrate
 
-Or install it yourself as:
+Then create an initial admin user from the rails console:
 
-    $ gem install trestle-auth
+    $ rails console
+    > User.create(email: "admin@example.com", password: "password", first_name: "Admin", last_name: "User")
 
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/trestle-auth.
+After restarting your Rails server, any attempt to access a page within your admin will redirect you to the login page.
 
 
 ## License
