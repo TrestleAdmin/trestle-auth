@@ -1,6 +1,10 @@
 module Trestle
   module Auth
     class Configuration
+      extend ActiveSupport::Autoload
+
+      autoload :Rememberable
+
       include Configurable
 
       option :user_class, -> { ::Administrator }
@@ -25,6 +29,8 @@ module Trestle
       option :locale, ->(user) {
         user.locale if user.respond_to?(:locale)
       }
+
+      option :remember, Rememberable.new
     end
   end
 end

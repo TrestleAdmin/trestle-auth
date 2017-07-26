@@ -9,10 +9,10 @@ class Trestle::Auth::SessionsController < Trestle::ApplicationController
   def create
     if user = Trestle.config.auth.authenticate(params)
       login!(user)
-      remember_me! if params[:remember_me] == "1"
+      remember_me! if Trestle.config.auth.remember.enabled && params[:remember_me] == "1"
       redirect_to previous_location || Trestle.config.path
     else
-      flash[:error] = "Incorrect login details."
+      flash[:error] = t("admin.auth.error", default: "Incorrect login details.")
       redirect_to action: :new
     end
   end

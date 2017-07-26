@@ -50,6 +50,34 @@ module Trestle
               # config.auth.locale = ->(user) {
               #   user.locale if user.respond_to?(:locale)
               # }
+
+              # Enable or disable remember me functionality. Defaults to true.
+              #
+              # config.auth.remember.enabled = false
+
+              # Specify remember me expiration time. Defaults to 2 weeks.
+              #
+              # config.auth.remember.for = 30.days
+
+              # Customize the method for authenticating a user given a remember token.
+              #
+              # config.auth.remember.authenticate = ->(token) {
+              #   User.authenticate_with_remember_token(token)
+              # }
+
+              # Customize the method for remembering a user.
+              #
+              # config.auth.remember.remember_me, ->(user) { user.remember_me! }
+
+              # Customize the method for forgetting a user.
+              #
+              # config.auth.remember.forget_me, ->(user) { user.forget_me! }
+
+              # Customize the method for generating the remember cookie.
+              #
+              # config.auth.remember.cookie, ->(user) {
+              #   { value: user.remember_token, expires: user.remember_token_expires_at }
+              # }
             }
             RUBY
           end

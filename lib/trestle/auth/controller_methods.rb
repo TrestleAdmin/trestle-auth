@@ -12,17 +12,26 @@ module Trestle
 
     protected
       def current_user
-        @current_user ||= Trestle.config.auth.user_scope.find_by(id: session[:trestle_user]) if session[:trestle_user]
+        @current_user ||= begin
+          if session[:trestle_user]
+            Trestle.config.auth.user_scope.find_by(id: session[:trestle_user])
+          elsif Trestle.config.auth.remember.enabled && token = cookies.signed[:trestle_remember_token]
+            user = Trestle.config.auth.remember.authenticate(token)
+            login!(user) if user
+            user
+          end
+        end
       end
 
       def login!(user)
-        @current_user = user
         session[:trestle_user] = user.id
+        @current_user = user
       end
 
       def logout!
-        @current_user = nil
+        forget_me!
         session.delete(:trestle_user)
+        @current_user = nil
       end
 
       def logged_in?
@@ -45,6 +54,16 @@ module Trestle
         store_location
         redirect_to trestle.login_url
         false
+      end
+
+      def remember_me!
+        Trestle.config.auth.remember.remember_me(current_user)
+        cookies.signed[:trestle_remember_token] = Trestle.config.auth.remember.cookie(current_user)
+      end
+
+      def forget_me!
+        Trestle.config.auth.remember.forget_me(current_user) if logged_in?
+        cookies.delete(:trestle_remember_token)
       end
 
       def set_locale

@@ -5,3 +5,4 @@ en:
       login: Login
       logout: Logout
       error: Incorrect login details.
+      remember_me: Remember me

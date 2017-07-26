@@ -16,7 +16,7 @@ a {
   display: block;
   font-weight: normal;
   color: rgba(white, 0.75);
-  background: rgba(black, 0.1);
+  background: rgba(black, 0.075);
   border-radius: 5px;
   padding: 10px 15px;
   font-size: 13px;
@@ -27,7 +27,7 @@ a {
   }
 
   &:hover {
-    background: rgba(black, 0.15);
+    background: rgba(black, 0.1);
   }
 }
 

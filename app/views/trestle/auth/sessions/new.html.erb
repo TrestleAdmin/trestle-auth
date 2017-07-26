@@ -23,6 +23,15 @@
 
   <%= hook("auth.login.form") %>
 
+  <% if Trestle.config.auth.remember.enabled %>
+  <div class="form-group">
+    <label class="remember-me">
+      <%= check_box_tag :remember_me %>
+      <%= t("admin.auth.remember_me", default: "Remember me") %>
+    </label>
+  </div>
+  <% end %>
+
   <div class="form-group">
     <%= submit_tag t("admin.auth.login", default: "Login"), class: "btn btn-primary btn-block" %>
   </div>
