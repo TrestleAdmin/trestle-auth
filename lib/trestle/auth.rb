@@ -1,5 +1,7 @@
 require "trestle/auth/version"
 
+require "trestle"
+
 module Trestle
   module Auth
     extend ActiveSupport::Autoload
