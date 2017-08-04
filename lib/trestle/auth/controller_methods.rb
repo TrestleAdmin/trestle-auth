@@ -57,11 +57,13 @@ module Trestle
       end
 
       def remember_me!
+        return unless Trestle.config.auth.remember.enabled
         Trestle.config.auth.remember.remember_me(current_user)
         cookies.signed[:trestle_remember_token] = Trestle.config.auth.remember.cookie(current_user)
       end
 
       def forget_me!
+        return unless Trestle.config.auth.remember.enabled
         Trestle.config.auth.remember.forget_me(current_user) if logged_in?
         cookies.delete(:trestle_remember_token)
       end
