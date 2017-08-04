@@ -21,7 +21,7 @@ Run `bundle install`, and then run the install generator to set up configuration
 Then create an initial admin user from the rails console:
 
     $ rails console
-    > User.create(email: "admin@example.com", password: "password", first_name: "Admin", last_name: "User")
+    > Administrator.create(email: "admin@example.com", password: "password", first_name: "Admin", last_name: "User")
 
 After restarting your Rails server, any attempt to access a page within your admin will redirect you to the login page.
 
