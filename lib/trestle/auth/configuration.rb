@@ -22,6 +22,10 @@ module Trestle
         )
       }
 
+      option :find_user, ->(id) {
+        Trestle.config.auth.user_scope.find_by(id: id)
+      }
+
       option :avatar, ->(user) {
         gravatar(user.email)
       }, evaluate: false

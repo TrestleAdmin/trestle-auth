@@ -14,7 +14,7 @@ module Trestle
       def current_user
         @current_user ||= begin
           if session[:trestle_user]
-            Trestle.config.auth.user_scope.find_by(id: session[:trestle_user])
+            Trestle.config.auth.find_user(session[:trestle_user])
           elsif Trestle.config.auth.remember.enabled && token = cookies.signed[:trestle_remember_token]
             user = Trestle.config.auth.remember.authenticate(token)
             login!(user) if user
