@@ -65,6 +65,12 @@ module Trestle
               #   User.authenticate_with_remember_token(token)
               # }
 
+              # Customize the method for finding a user given an ID from the session.
+              #
+              # config.auth.remember.find_user = ->(id) {
+              #   User.find_by(id: id)
+              # }
+
               # Customize the method for remembering a user.
               #
               # config.auth.remember.remember_me, ->(user) { user.remember_me! }
