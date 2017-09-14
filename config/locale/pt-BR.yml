@@ -1,0 +1,8 @@
+pt-BR:
+  admin:
+    auth:
+      my_account: Minha Conta
+      login: Entrar
+      logout: Sair
+      error: Email ou Senha incorretos.
+      remember_me: Lembrar-me
