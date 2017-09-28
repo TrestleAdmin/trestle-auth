@@ -1,0 +1,8 @@
+pl:
+  admin:
+    auth:
+      my_account: "Moje konto"
+      login: "Zaloguj się"
+      logout: "Wyloguj się"
+      error: "Nieprawidłowe dane logowania."
+      remember_me: "Zapamiętaj mnie"
