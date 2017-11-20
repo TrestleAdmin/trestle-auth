@@ -12,34 +12,15 @@ a {
   }
 }
 
-.remember-me {
-  display: block;
-  font-weight: normal;
-  color: rgba(white, 0.75);
-  background: rgba(black, 0.075);
-  border-radius: 5px;
-  padding: 10px 15px;
-  font-size: 13px;
-  cursor: pointer;
-
-  input {
-    margin-right: 10px;
-  }
-
-  &:hover {
-    background: rgba(black, 0.1);
-  }
-}
-
 .form-control, .input-group-addon {
-  background: rgba(white, 0.1);
-  border: none;
+  background: $auth-form-control-bg;
+  border: $auth-form-control-border;
 }
 
 .form-control {
   box-shadow: none;
 
-  color: white;
+  color: $auth-form-control-color;
 
   height: auto;
   padding: 12px 5px;
@@ -53,11 +34,11 @@ a {
   }
 
   &::placeholder {
-    color: rgba(white, 0.5);
+    color: $auth-form-control-placeholder;
   }
 
   &:-webkit-autofill {
-    -webkit-text-fill-color: white;
+    -webkit-text-fill-color: $auth-form-control-color;
 
     &, &:hover, &:focus, &:active {
       transition: background-color 9999999s ease-in-out 0s;
@@ -73,6 +54,27 @@ a {
   }
 }
 
+.remember-me {
+  display: block;
+  font-weight: normal;
+  color: $auth-remember-me-color;
+  background: $auth-remember-me-bg;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 13px;
+  cursor: pointer;
+
+  input {
+    margin-right: 10px;
+    margin-top: 0;
+    vertical-align: middle;
+  }
+
+  &:hover {
+    background: opacify($auth-remember-me-bg, 0.05);
+  }
+}
+
 .btn {
   box-shadow: rgba(black, 0.1) 0 0 2px;
   padding: 12px;
@@ -82,20 +84,24 @@ a {
 .btn-primary {
   outline: none;
 
+  color: $auth-login-btn-color;
+  background: $auth-login-btn-bg;
+  border: $auth-login-btn-border;
+
   &:hover {
-    background-color: darken($btn-primary-bg, 2.5%);
-    border-color: darken($btn-primary-border, 5%);
+    background-color: darken($auth-login-btn-bg, 2.5%);
+    border-color: darken($auth-login-btn-border, 5%);
   }
 
   &:focus, &:active {
-    background-color: darken($btn-primary-bg, 5%);
-    border-color: darken($btn-primary-border, 10%);
+    background-color: darken($auth-login-btn-bg, 5%);
+    border-color: darken($auth-login-btn-border, 10%);
   }
 
   &:active:focus {
     outline: none !important;
-    background-color: darken($btn-primary-bg, 10%);
-    border-color: darken($btn-primary-border, 15%);
+    background-color: darken($auth-login-btn-bg, 10%);
+    border-color: darken($auth-login-btn-border, 15%);
   }
 }
 
