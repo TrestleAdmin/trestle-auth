@@ -34,6 +34,10 @@ module Trestle
         user.locale if user.respond_to?(:locale)
       }
 
+      option :time_zone, ->(user) {
+        user.time_zone if user.respond_to?(:time_zone)
+      }
+
       option :remember, Rememberable.new
     end
   end
