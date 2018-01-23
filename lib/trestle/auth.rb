@@ -7,6 +7,7 @@ module Trestle
     extend ActiveSupport::Autoload
 
     autoload :Configuration
+    autoload :Constraint
     autoload :ControllerMethods
     autoload :ModelMethods
     autoload :NullUser
