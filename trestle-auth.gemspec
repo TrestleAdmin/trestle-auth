@@ -11,7 +11,6 @@ Gem::Specification.new do |spec|
   spec.email         = ["sam@sampohlenz.com"]
 
   spec.summary       = "Authentication plugin for the Trestle admin framework"
-  spec.description   = "Authentication plugin for the Trestle admin framework."
   spec.homepage      = "https://www.trestle.io"
   spec.license       = "LGPL-3.0"
 
