@@ -37,6 +37,13 @@ module Trestle
               #   User.authenticate(params[:login], params[:password])
               # }
 
+              # Customize the method for finding a user given an ID from the session.
+              # The block should return an instance of the auth user class, or nil.
+              #
+              # config.auth.find_user = ->(id) {
+              #   User.find_by(id: id)
+              # }
+
               # Customize the rendering of user avatars. Can be disabled by setting to false.
               # Defaults to the Gravatar based on the user's email address.
               #
@@ -70,12 +77,6 @@ module Trestle
               #
               # config.auth.remember.authenticate = ->(token) {
               #   User.authenticate_with_remember_token(token)
-              # }
-
-              # Customize the method for finding a user given an ID from the session.
-              #
-              # config.auth.remember.find_user = ->(id) {
-              #   User.find_by(id: id)
               # }
 
               # Customize the method for remembering a user.
