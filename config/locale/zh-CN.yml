@@ -1,0 +1,8 @@
+zh-CN:
+  admin:
+    auth:
+      my_account: "我的账号"
+      login: "登录"
+      logout: "退出登录"
+      error: "登录信息不正确。"
+      remember_me: "记住我"
