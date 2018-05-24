@@ -10,7 +10,7 @@
 
   <ul class="dropdown-menu dropdown-menu-right">
     <% if Trestle.config.auth.user_admin && user_admin = Trestle.lookup(Trestle.config.auth.user_admin) -%>
-      <li><%= link_to t("admin.auth.my_account", default: "My Account"), user_admin.path(:show, id: current_user), class: "dropdown-item" %></li>
+      <li><%= admin_link_to t("admin.auth.my_account", default: "My Account"), current_user, admin: user_admin, class: "dropdown-item" %></li>
     <% end -%>
     <li><%= link_to t("admin.auth.logout", default: "Log out"), trestle.logout_path, class: "dropdown-item" %></li>
   </ul>
