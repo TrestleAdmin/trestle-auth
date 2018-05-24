@@ -27,7 +27,7 @@ module Trestle
       }
 
       option :avatar, ->(user) {
-        gravatar(user.email)
+        avatar { gravatar(user.email) }
       }, evaluate: false
 
       option :locale, ->(user) {

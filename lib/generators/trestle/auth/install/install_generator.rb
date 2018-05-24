@@ -48,7 +48,9 @@ module Trestle
               # Defaults to the Gravatar based on the user's email address.
               #
               # config.auth.avatar = ->(user) {
-              #   image_tag(user.avatar_url, alt: user.name)
+              #   avatar(fallback: user.initials) do
+              #     image_tag(user.avatar_url, alt: user.name) if user.avatar_url?
+              #   end
               # }
 
               # Customize the method for determining the user's locale.
