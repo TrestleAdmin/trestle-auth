@@ -32,11 +32,11 @@ module Trestle
 
       option :locale, ->(user) {
         user.locale if user.respond_to?(:locale)
-      }
+      }, evaluate: false
 
       option :time_zone, ->(user) {
         user.time_zone if user.respond_to?(:time_zone)
-      }
+      }, evaluate: false
 
       option :remember, Rememberable.new
     end

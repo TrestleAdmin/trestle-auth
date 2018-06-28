@@ -8,8 +8,8 @@ module Trestle
 
         before_action :require_authenticated_user
 
-        around_action :set_locale, if: :logged_in?
-        around_action :set_time_zone, if: :logged_in?
+        around_action :set_locale, if: :logged_in? if Trestle.config.auth.locale
+        around_action :set_time_zone, if: :logged_in? if Trestle.config.auth.time_zone
       end
 
     protected
@@ -71,11 +71,11 @@ module Trestle
       end
 
       def set_locale
-        I18n.with_locale(Trestle.config.auth.locale(current_user) || I18n.default_locale) { yield }
+        I18n.with_locale(Trestle.config.auth.locale.call(current_user) || I18n.default_locale) { yield }
       end
 
       def set_time_zone
-        Time.use_zone(Trestle.config.auth.time_zone(current_user) || Rails.application.config.time_zone) { yield }
+        Time.use_zone(Trestle.config.auth.time_zone.call(current_user) || Rails.application.config.time_zone) { yield }
       end
     end
   end
