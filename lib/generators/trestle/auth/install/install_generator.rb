@@ -53,6 +53,14 @@ module Trestle
               #   end
               # }
 
+              # Customize the rendering of the current user's name in the main header.
+              # Defaults to the user's #first_name and #last_name (last name in bold),
+              # with a fallback to `display(user)` if those methods aren't defined.
+              #
+              # config.auth.format_user_name = ->(user) {
+              #   content_tag(:strong, user.full_name)
+              # }
+
               # Customize the method for determining the user's locale.
               # Defaults to user.locale (if the method is defined).
               #
