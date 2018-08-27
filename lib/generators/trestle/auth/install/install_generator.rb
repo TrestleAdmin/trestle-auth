@@ -75,6 +75,22 @@ module Trestle
               #   user.time_zone if user.respond_to?(:time_zone)
               # }
 
+              # Specify the redirect location after a successful login.
+              # Defaults to the main Trestle admin path.
+              #
+              # config.auth.redirect_on_login = -> {
+              #   if admin = Trestle.lookup(Trestle.config.auth.user_admin)
+              #     admin.instance_path(current_user)
+              #   else
+              #     Trestle.config.path
+              #   end
+              # }
+
+              # Specify the redirect location after logging out.
+              # Defaults to the trestle-auth new login path.
+              #
+              # config.auth.redirect_on_logout = -> { "/" }
+
               # Enable or disable remember me functionality. Defaults to true.
               #
               # config.auth.remember.enabled = false

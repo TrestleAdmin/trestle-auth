@@ -10,7 +10,7 @@ class Trestle::Auth::SessionsController < Trestle::ApplicationController
     if user = Trestle.config.auth.authenticate(params)
       login!(user)
       remember_me! if params[:remember_me] == "1"
-      redirect_to previous_location || Trestle.config.path
+      redirect_to previous_location || instance_exec(&Trestle.config.auth.redirect_on_login)
     else
       flash[:error] = t("admin.auth.error", default: "Incorrect login details.")
       redirect_to action: :new
@@ -19,6 +19,6 @@ class Trestle::Auth::SessionsController < Trestle::ApplicationController
 
   def destroy
     logout!
-    redirect_to login_url
+    redirect_to instance_exec(&Trestle.config.auth.redirect_on_logout)
   end
 end
