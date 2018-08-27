@@ -6,6 +6,12 @@ module Trestle
 
         argument :model, type: :string, default: "Administrator"
 
+        def check_trestle_installed
+          unless ::File.exist?("config/initializers/trestle.rb")
+            raise Thor::Error, "The file config/initializers/trestle.rb does not appear to exist. Please run `trestle:install` first."
+          end
+        end
+
         def insert_configuration
           inject_into_file "config/initializers/trestle.rb", before: /^end/ do
             <<-RUBY.strip_heredoc.indent(2)
