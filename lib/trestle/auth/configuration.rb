@@ -49,6 +49,8 @@ module Trestle
       option :redirect_on_login, -> { Trestle.config.path }, evaluate: false
       option :redirect_on_logout, -> { login_url }, evaluate: false
 
+      option :logo
+
       option :remember, Rememberable.new
     end
   end

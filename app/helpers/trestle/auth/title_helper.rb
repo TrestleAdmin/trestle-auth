@@ -2,7 +2,9 @@ module Trestle
   module Auth
     module TitleHelper
       def trestle_auth_title
-        if Trestle.config.site_logo
+        if Trestle.config.auth.logo
+          image_tag(Trestle.config.auth.logo)
+        elsif Trestle.config.site_logo
           image_tag(Trestle.config.site_logo)
         elsif Trestle.config.site_logo_small
           safe_join([

@@ -97,6 +97,12 @@ module Trestle
               #
               # config.auth.redirect_on_logout = -> { "/" }
 
+              # Specify the logo used on the login form.
+              # If not specified, will fall back to config.site_logo,
+              # config.site_logo_small or config.site_title.
+              #
+              # config.auth.logo = "auth-logo.png"
+
               # Enable or disable remember me functionality. Defaults to true.
               #
               # config.auth.remember.enabled = false
