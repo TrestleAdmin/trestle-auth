@@ -1,16 +1,15 @@
-@import "trestle/support";
+@import "~trestle/frontend/css/support";
 
 .userbox {
-  margin-top: 2px;
-  margin-bottom: 2px;
+  order: 99;
+  padding: 2px 0;
 
   > a {
-    color: $text-color;
+    color: $body-color;
 
     display: block;
     padding: 2px 0;
 
-    font-size: 14px;
     font-weight: normal;
     line-height: 40px;
 
@@ -24,19 +23,18 @@
     margin-left: 6px;
   }
 
-  .name {
-    color: $text-color;
+  .dropdown-toggle {
+    &::after {
+      vertical-align: middle;
+    }
   }
 }
 
-@include mobile {
+@include media-breakpoint-down(sm) {
   .userbox {
+    display: block;
     position: relative;
     z-index: 5;
-
-    > a, .name {
-      color: white;
-    }
 
     .name {
       display: none;

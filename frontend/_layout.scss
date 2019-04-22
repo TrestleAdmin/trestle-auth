@@ -1,0 +1,35 @@
+.auth-body {
+  display: flex;
+  color: white;
+
+  .container {
+    margin: auto;
+    width: 320px;
+  }
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 20px;
+
+  h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.75rem;
+    font-weight: 500;
+    text-shadow: rgba(black, 0.5) 0 1px 1px;
+
+    padding: 0.75rem 1rem;
+  }
+
+  img {
+    max-width: 80%;
+    max-height: 100%;
+  }
+
+  span {
+    margin-left: 10px;
+  }
+}
