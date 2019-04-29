@@ -12,7 +12,7 @@
     "watch": "webpack --mode development --watch"
   },
   "dependencies": {
-    "trestle": "file:../trestle"
+    "trestle": "https://github.com/TrestleAdmin/trestle.git#bootstrap4"
   },
   "devDependencies": {
     "autoprefixer": "^9.5.1",
