@@ -1,0 +1,8 @@
+es:
+  admin:
+    auth:
+      my_account: "Mi Conta"
+      login: "Inicio de sesión"
+      logout: "Sair"
+      error: "Email o contraseña incorrectos."
+      remember_me: "Recuérdame"
