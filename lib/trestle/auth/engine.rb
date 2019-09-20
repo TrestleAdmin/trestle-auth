@@ -1,7 +1,7 @@
 module Trestle
   module Auth
     class Engine < ::Rails::Engine
-      config.assets.precompile << "trestle/auth.css" << "trestle/auth.js" << "trestle/auth/userbox.scss"
+      config.assets.precompile << "trestle/auth.css" << "trestle/auth/userbox.scss"
 
       config.before_initialize do
         Trestle::Engine.paths["app/helpers"].concat(paths["app/helpers"].existent)
