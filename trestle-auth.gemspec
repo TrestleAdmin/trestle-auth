@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(spec|node_modules)/}) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "trestle", "~> 0.8"
+  spec.add_dependency "trestle", "~> 0.9.0"
   spec.add_dependency "bcrypt",  "~> 3.1.7"
 
   spec.add_development_dependency "bundler", "~> 1.12"
