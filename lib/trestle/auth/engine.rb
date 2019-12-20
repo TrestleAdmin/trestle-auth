@@ -7,7 +7,7 @@ module Trestle
         Trestle::Engine.paths["app/helpers"].concat(paths["app/helpers"].existent)
       end
 
-      config.to_prepare do
+      initializer :extensions do
         Trestle::ApplicationController.send(:include, Trestle::Auth::ControllerMethods)
       end
     end
