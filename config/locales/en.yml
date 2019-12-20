@@ -13,3 +13,8 @@ en:
 
       breadcrumbs:
         index: "My Account"
+
+    flash:
+      unauthorized:
+        title: "Access Denied!"
+        message: "You are not authorized to access this page."
