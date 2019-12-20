@@ -11,6 +11,14 @@ module Trestle
     autoload :ControllerMethods
     autoload :ModelMethods
     autoload :NullUser
+
+    module Controller
+      extend ActiveSupport::Autoload
+
+      autoload :Authentication
+      autoload :Locale
+      autoload :TimeZone
+    end
   end
 
   Configuration.option :auth, Auth::Configuration.new
