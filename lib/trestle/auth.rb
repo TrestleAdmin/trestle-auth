@@ -15,6 +15,7 @@ module Trestle
     require_relative "auth/model_methods"
     require_relative "auth/null_user"
     require_relative "auth/resource"
+    require_relative "auth/toolbars"
 
     module Controller
       require_relative "auth/controller/authentication"

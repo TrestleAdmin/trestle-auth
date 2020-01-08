@@ -14,6 +14,8 @@ module Trestle
         Trestle::Resource.send(:include, Trestle::Auth::Resource)
         Trestle::Resource::Controller.send(:include, Trestle::Auth::Resource::Controller)
 
+        Trestle::Table::ActionsColumn::ActionsBuilder.send(:prepend, Trestle::Auth::Toolbars::TableActionsBuilder)
+
         # Include base controller methods last to ensure that the callbacks from
         # Trestle::Resource::Controller callbacks have been initialized.
         Trestle::ApplicationController.send(:include, Trestle::Auth::ControllerMethods)
