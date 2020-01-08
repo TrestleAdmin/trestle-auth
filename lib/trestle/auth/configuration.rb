@@ -62,6 +62,9 @@ module Trestle
 
       option :redirect_on_login, -> { Trestle.config.path }, evaluate: false
       option :redirect_on_logout, -> { login_url }, evaluate: false
+      option :redirect_on_access_denied, -> {
+        authorized?(:index, root_authorization_target) ? admin.path(:index) : Trestle.config.root
+      }, evaluate: false
 
       option :logo
 

@@ -7,7 +7,7 @@ module Trestle
         included do
           before_action :authorize, if: :authorize?
           helper_method :authorized?
-          rescue_from AccessDenied, with: :unauthorized!
+          rescue_from AccessDenied, with: :access_denied!
         end
 
       protected
@@ -25,17 +25,13 @@ module Trestle
           defined?(admin) && admin && admin.authorize?
         end
 
-        def unauthorized!(exception)
+        def access_denied!(exception)
           flash[:error] = {
             title:   t("admin.flash.unauthorized.title", default: "Access Denied!"),
             message: t("admin.flash.unauthorized.message", default: "You are not authorized to access this page.", message: exception.message)
           }
 
-          if authorized?(:index, root_authorization_target)
-            redirect_to admin.path(:index)
-          else
-            redirect_to Trestle.config.root
-          end
+          redirect_to instance_exec(&Trestle.config.auth.redirect_on_access_denied)
         end
 
         def authorization_target

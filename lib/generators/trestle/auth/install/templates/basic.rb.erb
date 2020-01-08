@@ -79,6 +79,12 @@ config.auth.user_admin = -> { :"auth/account" }
 #
 # config.auth.redirect_on_logout = -> { "/" }
 
+# Specify the redirect location when access is denied.
+# Defaults to the admin index (if authorized), otherwise falling back to
+# the main Trestle admin path.
+#
+# config.auth.redirect_on_access_denied = -> { "/" }
+
 # Enable or disable the built-in login/logout form and actions. Defaults to true.
 # You may wish to disable these if you are using a custom backend and
 # handling authentication entirely within your main application.
