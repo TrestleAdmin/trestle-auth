@@ -24,6 +24,7 @@ module Trestle
 
     module Extensions
       require_relative "auth/extensions/admin"
+      require_relative "auth/extensions/form"
       require_relative "auth/extensions/navigation"
       require_relative "auth/extensions/resource"
       require_relative "auth/extensions/toolbars"

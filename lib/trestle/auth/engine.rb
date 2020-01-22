@@ -19,6 +19,8 @@ module Trestle
 
         Trestle::Navigation::Item.send(:prepend, Trestle::Auth::Extensions::Navigation::Item)
 
+        Trestle::Form::Field.send(:prepend, Trestle::Auth::Extensions::Form::Field)
+
         # Include base controller methods last to ensure that the callbacks from
         # Trestle::Resource::Controller callbacks have been initialized.
         Trestle::ApplicationController.send(:include, Trestle::Auth::ControllerMethods)
