@@ -8,13 +8,13 @@ module Trestle
       end
 
       initializer :extensions do
-        Trestle::Admin.send(:include, Trestle::Auth::Admin)
-        Trestle::Admin::Builder.send(:include, Trestle::Auth::Builder)
+        Trestle::Admin.send(:include, Trestle::Auth::Extensions::Admin)
+        Trestle::Admin::Builder.send(:include, Trestle::Auth::Extensions::Admin::Builder)
 
-        Trestle::Resource.send(:include, Trestle::Auth::Resource)
-        Trestle::Resource::Controller.send(:include, Trestle::Auth::Resource::Controller)
+        Trestle::Resource.send(:include, Trestle::Auth::Extensions::Resource)
+        Trestle::Resource::Controller.send(:include, Trestle::Auth::Extensions::Resource::Controller)
 
-        Trestle::Table::ActionsColumn::ActionsBuilder.send(:prepend, Trestle::Auth::Toolbars::TableActionsBuilder)
+        Trestle::Table::ActionsColumn::ActionsBuilder.send(:prepend, Trestle::Auth::Extensions::Toolbars::TableActionsBuilder)
 
         # Include base controller methods last to ensure that the callbacks from
         # Trestle::Resource::Controller callbacks have been initialized.
