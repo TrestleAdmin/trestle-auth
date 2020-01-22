@@ -11,8 +11,8 @@ module Trestle
         end
 
       protected
-        def authorized?(action_name, target)
-          !authorize? || admin.authorization_adapter.authorized?(action_name.to_sym, target)
+        def authorized?(action_name, target=nil)
+          !authorize? || admin.authorized?(action_name.to_sym, target)
         end
 
         def authorize

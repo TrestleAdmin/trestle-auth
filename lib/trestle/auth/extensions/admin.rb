@@ -8,6 +8,10 @@ module Trestle
           singleton_class.attr_accessor :authorization_adapter
         end
 
+        def authorized?(action, target=nil)
+          authorization_adapter.authorized?(action, target)
+        end
+
         def authorization_adapter
           @authorization_adapter ||= self.class.authorization_adapter.new(self, current_user)
         end
@@ -16,8 +20,10 @@ module Trestle
           @context.send(:current_user)
         end
 
-        def authorize?
-          self.class.authorization_adapter
+        module ClassMethods
+          def authorize?
+            !!authorization_adapter
+          end
         end
 
         module Builder
