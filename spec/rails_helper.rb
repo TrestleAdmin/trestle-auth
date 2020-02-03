@@ -7,8 +7,6 @@ require File.expand_path('dummy/config/environment', __dir__)
 require 'rspec/rails'
 require 'show_me_the_cookies'
 
-# Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
-
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
 begin
