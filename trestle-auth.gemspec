@@ -25,4 +25,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "bcrypt",  "~> 3.1.7"
 
   spec.add_development_dependency "rspec-rails", "~> 3.0"
+  spec.add_development_dependency "show_me_the_cookies", "~> 5.0"
 end

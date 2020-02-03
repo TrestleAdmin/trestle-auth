@@ -5,6 +5,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('dummy/config/environment', __dir__)
 
 require 'rspec/rails'
+require 'show_me_the_cookies'
 
 # Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
@@ -46,4 +47,6 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  config.include ShowMeTheCookies, type: :feature
 end
