@@ -11,15 +11,7 @@ module Trestle
 
       protected
         def current_user
-          @current_user ||= begin
-            if session[:trestle_user]
-              Trestle.config.auth.find_user(session[:trestle_user])
-            elsif Trestle.config.auth.remember.enabled && token = cookies.signed[:trestle_remember_token]
-              user = Trestle.config.auth.remember.authenticate(token)
-              login!(user) if user
-              user
-            end
-          end
+          @current_user ||= find_authenticated_user
         end
 
         def login!(user)
@@ -28,7 +20,6 @@ module Trestle
         end
 
         def logout!
-          forget_me!
           session.delete(:trestle_user)
           @current_user = nil
         end
@@ -45,6 +36,10 @@ module Trestle
           session.delete(:trestle_return_to)
         end
 
+        def find_authenticated_user
+          Trestle.config.auth.find_user(session[:trestle_user]) if session[:trestle_user]
+        end
+
         def require_authenticated_user
           logged_in? || login_required!
         end
@@ -53,18 +48,6 @@ module Trestle
           store_location
           redirect_to trestle.login_url
           false
-        end
-
-        def remember_me!
-          return unless Trestle.config.auth.remember.enabled
-          Trestle.config.auth.remember.remember_me(current_user)
-          cookies.signed[:trestle_remember_token] = Trestle.config.auth.remember.cookie(current_user)
-        end
-
-        def forget_me!
-          return unless Trestle.config.auth.remember.enabled
-          Trestle.config.auth.remember.forget_me(current_user) if logged_in?
-          cookies.delete(:trestle_remember_token)
         end
       end
     end

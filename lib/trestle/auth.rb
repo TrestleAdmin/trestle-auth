@@ -17,6 +17,7 @@ module Trestle
 
       autoload :Authentication
       autoload :Locale
+      autoload :Remember
       autoload :TimeZone
     end
   end
