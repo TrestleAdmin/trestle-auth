@@ -76,6 +76,14 @@ describe Trestle::Auth::Configuration do
     expect(config.time_zone.call(user)).to eq("Australia/Adelaide")
   end
 
+  it "has a enable_login configuration option" do
+    expect(config).to have_accessor(:enable_login).with_default(true)
+  end
+
+  it "has a enable_logout configuration option" do
+    expect(config).to have_accessor(:enable_logout).with_default(true)
+  end
+
   it "has a redirect_on_login configuration block option" do
     config.redirect_on_login = block
     expect(config.redirect_on_login).to eq(block)

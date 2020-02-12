@@ -97,6 +97,13 @@ module Trestle
               #
               # config.auth.redirect_on_logout = -> { "/" }
 
+              # Enable or disable the built-in login/logout form and actions. Defaults to true.
+              # You may wish to disable these if you are using a custom backend and
+              # handling authentication entirely within your main application.
+              #
+              # config.auth.login_enabled = true
+              # config.auth.logout_enabled = true
+
               # Specify the logo used on the login form.
               # If not specified, will fall back to config.site_logo,
               # config.site_logo_small or config.site_title.

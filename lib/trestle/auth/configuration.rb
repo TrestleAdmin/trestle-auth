@@ -47,6 +47,9 @@ module Trestle
         user.time_zone if user.respond_to?(:time_zone)
       }, evaluate: false
 
+      option :enable_login, true
+      option :enable_logout, true
+
       option :redirect_on_login, -> { Trestle.config.path }, evaluate: false
       option :redirect_on_logout, -> { login_url }, evaluate: false
 

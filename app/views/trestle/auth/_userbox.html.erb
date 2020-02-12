@@ -1,16 +1,28 @@
-<div class="userbox dropdown">
-  <%= link_to "#", data: { toggle: 'dropdown' } do %>
-    <span class="name dropdown-toggle">
+<% show_dropdown = (Trestle.config.auth.user_admin && Trestle.lookup(Trestle.config.auth.user_admin)) || Trestle.config.auth.enable_logout %>
+
+<div class="userbox<% if show_dropdown %> dropdown<% end %>">
+  <% content = capture do %>
+    <span class="name<% if show_dropdown %> dropdown-toggle<% end %>">
       <%= format_user_name(current_user) %>
     </span>
 
     <%= avatar_for(current_user) %>
   <% end %>
 
+  <% if show_dropdown %>
+    <%= link_to content, "#", data: { toggle: 'dropdown' } %>
+  <% else %>
+    <%= content %>
+  <% end %>
+
+  <% if show_dropdown -%>
   <ul class="dropdown-menu dropdown-menu-right">
     <% if Trestle.config.auth.user_admin && user_admin = Trestle.lookup(Trestle.config.auth.user_admin) -%>
       <li><%= admin_link_to t("admin.auth.my_account", default: "My Account"), current_user, admin: user_admin, class: "dropdown-item" %></li>
     <% end -%>
-    <li><%= link_to t("admin.auth.logout", default: "Log out"), trestle.logout_path, class: "dropdown-item" %></li>
+    <% if Trestle.config.auth.enable_logout -%>
+      <li><%= link_to t("admin.auth.logout", default: "Log out"), trestle.logout_path, class: "dropdown-item" %></li>
+    <% end -%>
   </ul>
+  <% end %>
 </div>

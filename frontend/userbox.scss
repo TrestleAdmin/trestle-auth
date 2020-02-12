@@ -4,6 +4,9 @@
   order: 99;
   padding: 2px 0;
 
+  display: flex;
+  align-items: center;
+
   > a {
     color: $body-color;
 
@@ -42,6 +45,7 @@
 
     .avatar {
       border: 1px solid rgba(white, 0.25);
+      margin-left: 0;
     }
   }
 }
