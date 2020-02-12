@@ -1,6 +1,10 @@
 require "rails_helper"
 
-feature "Authentication" do
+feature "Authentication with basic backend" do
+  before(:all) do
+    Trestle.config.auth.backend = :basic
+  end
+
   before(:each) do
     create_administrator
   end
@@ -11,24 +15,36 @@ feature "Authentication" do
   end
 
   scenario "successful login" do
-    visit "/admin/login"
-
-    fill_in "Email", with: "admin@example.com"
-    fill_in "Password", with: "password"
-    click_button "Login"
-
+    login
     expect(page).to have_current_path("/admin")
+    expect(page).to have_content("Admin User")
   end
 
   scenario "failed login" do
-    visit "/admin/login"
-
-    fill_in "Email", with: "admin@example.com"
-    fill_in "Password", with: "incorrect"
-    click_button "Login"
-
+    login(password: "incorrect")
     expect(page).to have_current_path("/admin/login")
     expect(page).to have_content("Incorrect login details")
+  end
+
+  context "remember me" do
+    scenario "remember login between sessions" do
+      login(remember_me: true)
+
+      expire_cookies
+
+      visit "/admin"
+      expect(page).to have_current_path("/admin")
+    end
+
+    scenario "forget login after logging out" do
+      login(remember_me: true)
+      logout
+
+      expire_cookies
+
+      visit "/admin"
+      expect(page).to have_current_path("/admin/login")
+    end
   end
 
   def create_administrator

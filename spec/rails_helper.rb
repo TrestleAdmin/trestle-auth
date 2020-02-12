@@ -47,4 +47,5 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include ShowMeTheCookies, type: :feature
+  config.include Trestle::Auth::Test::LoginHelpers, type: :feature
 end

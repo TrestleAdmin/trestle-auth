@@ -4,6 +4,7 @@ module Trestle
       extend ActiveSupport::Autoload
 
       autoload :Rememberable
+      autoload :Warden
 
       include Configurable
 
@@ -52,6 +53,8 @@ module Trestle
       option :logo
 
       option :remember, Rememberable.new
+
+      option :backend, Trestle::Auth::Backends::Basic
     end
   end
 end

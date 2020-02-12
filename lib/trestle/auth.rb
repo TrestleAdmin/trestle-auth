@@ -12,12 +12,18 @@ module Trestle
     autoload :ModelMethods
     autoload :NullUser
 
+    module Backends
+      extend ActiveSupport::Autoload
+
+      autoload :Base
+      autoload :Basic
+    end
+
     module Controller
       extend ActiveSupport::Autoload
 
       autoload :Authentication
       autoload :Locale
-      autoload :Remember
       autoload :TimeZone
     end
   end

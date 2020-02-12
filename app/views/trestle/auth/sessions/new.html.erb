@@ -1,4 +1,4 @@
-<%= form_tag login_path, class: "login-form" do %>
+<%= form_for authentication_scope, url: login_path, html: { class: "login-form" } do |f| %>
   <header class="auth-header">
     <%= hook("auth.login.heading") do %>
       <h1><%= trestle_auth_title %></h1>
@@ -16,7 +16,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text"><i class="fa fa-user fa-fw"></i></span>
       </div>
-      <%= text_field_tag Trestle.config.auth.authenticate_with, "", placeholder: Trestle.config.auth.authenticate_with.to_s.humanize, class: "form-control" %>
+      <%= f.text_field Trestle.config.auth.authenticate_with, placeholder: Trestle.config.auth.authenticate_with.to_s.humanize, class: "form-control" %>
     </div>
   </div>
 
@@ -25,7 +25,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text"><i class="fa fa-lock fa-fw"></i></span>
       </div>
-      <%= password_field_tag :password, "", placeholder: "Password", class: "form-control" %>
+      <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
     </div>
   </div>
 
@@ -34,13 +34,13 @@
   <% if Trestle.config.auth.remember.enabled %>
   <div class="form-group">
     <div class="custom-control custom-checkbox remember-me">
-      <%= check_box_tag :remember_me, "1", false, class: "custom-control-input" %>
-      <%= label_tag :remember_me, t("admin.auth.remember_me", default: "Remember me"), class: "custom-control-label" %>
+      <%= f.check_box :remember_me, class: "custom-control-input", include_hidden: false %>
+      <%= f.label :remember_me, t("admin.auth.remember_me", default: "Remember me"), class: "custom-control-label" %>
     </div>
   </div>
   <% end %>
 
   <div class="form-group">
-    <%= submit_tag t("admin.auth.login", default: "Login"), class: "btn btn-primary btn-block btn-lg" %>
+    <%= f.submit t("admin.auth.login", default: "Login"), class: "btn btn-primary btn-block btn-lg" %>
   </div>
 <% end %>

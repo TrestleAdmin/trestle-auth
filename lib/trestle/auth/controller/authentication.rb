@@ -5,49 +5,49 @@ module Trestle
         extend ActiveSupport::Concern
 
         included do
-          helper_method :current_user, :logged_in?
+          helper_method :current_user, :logged_in?, :authentication_scope
+
+          before_action :authenticate_user
           before_action :require_authenticated_user
         end
 
       protected
+        def authentication_backend
+          @_authentication_backend ||= Trestle.config.auth.backend.new(controller: self, request: request, session: session, cookies: cookies)
+        end
+
         def current_user
-          @current_user ||= find_authenticated_user
-        end
-
-        def login!(user)
-          session[:trestle_user] = user.id
-          @current_user = user
-        end
-
-        def logout!
-          session.delete(:trestle_user)
-          @current_user = nil
+          authentication_backend.user
         end
 
         def logged_in?
-          !!current_user
+          authentication_backend.logged_in?
         end
 
-        def store_location
-          session[:trestle_return_to] = request.fullpath
-        end
-
-        def previous_location
-          session.delete(:trestle_return_to)
-        end
-
-        def find_authenticated_user
-          Trestle.config.auth.find_user(session[:trestle_user]) if session[:trestle_user]
+        def authenticate_user
+          authentication_backend.authenticate
         end
 
         def require_authenticated_user
           logged_in? || login_required!
         end
 
+        def login!(user)
+          authentication_backend.login!(user)
+        end
+
+        def logout!
+          authentication_backend.logout!
+        end
+
         def login_required!
-          store_location
+          authentication_backend.store_location(request.fullpath)
           redirect_to trestle.login_url
           false
+        end
+
+        def authentication_scope
+          authentication_backend.scope
         end
       end
     end

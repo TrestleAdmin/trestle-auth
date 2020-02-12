@@ -5,7 +5,6 @@ module Trestle
 
       include Trestle::Auth::Controller::Authentication
       include Trestle::Auth::Controller::Locale
-      include Trestle::Auth::Controller::Remember
       include Trestle::Auth::Controller::TimeZone
     end
   end
