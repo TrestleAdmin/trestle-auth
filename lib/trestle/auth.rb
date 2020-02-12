@@ -6,20 +6,12 @@ module Trestle
   module Auth
     extend ActiveSupport::Autoload
 
+    autoload :Backends
     autoload :Configuration
     autoload :Constraint
     autoload :ControllerMethods
     autoload :ModelMethods
     autoload :NullUser
-
-    module Backends
-      extend ActiveSupport::Autoload
-
-      autoload :Base
-      autoload :Basic
-      autoload :Devise
-      autoload :Warden
-    end
 
     module Controller
       extend ActiveSupport::Autoload
