@@ -3,7 +3,7 @@
     <div class="input-group-prepend">
       <span class="input-group-text"><i class="fa fa-user fa-fw"></i></span>
     </div>
-    <%= f.text_field Trestle.config.auth.authenticate_with, placeholder: Trestle.config.auth.authenticate_with.to_s.humanize, class: "form-control" %>
+    <%= f.text_field Trestle.config.auth.authenticate_with, placeholder: Trestle.config.auth.human_attribute_name(Trestle.config.auth.authenticate_with), class: "form-control" %>
   </div>
 </div>
 
@@ -12,7 +12,7 @@
     <div class="input-group-prepend">
       <span class="input-group-text"><i class="fa fa-lock fa-fw"></i></span>
     </div>
-    <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
+    <%= f.password_field :password, placeholder: Trestle.config.auth.human_attribute_name(:password), class: "form-control" %>
   </div>
 </div>
 

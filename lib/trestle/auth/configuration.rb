@@ -27,6 +27,16 @@ module Trestle
         Trestle.config.auth.user_scope.find_by(id: id)
       }
 
+      option :human_attribute_name, ->(field) {
+        model = Trestle.config.auth.user_class rescue nil
+
+        if model && model.respond_to?(:human_attribute_name)
+          model.human_attribute_name(field)
+        else
+          field.to_s.humanize
+        end
+      }
+
       option :avatar, ->(user) {
         avatar { gravatar(user.email) }
       }, evaluate: false

@@ -48,6 +48,21 @@ describe Trestle::Auth::Configuration do
     config.find_user(123)
   end
 
+  it "has a human_attribute_name configuration block option" do
+    expect(config).to have_accessor(:human_attribute_name)
+
+    config.human_attribute_name = ->(field) { field.to_s.upcase }
+
+    expect(config.human_attribute_name(:email)).to eq("EMAIL")
+  end
+
+  it "has a default human_attribute_name block" do
+    Trestle.config.auth.user_class = model
+
+    expect(model).to receive(:human_attribute_name).with(:email).and_return("Email address")
+    expect(config.human_attribute_name(:email)).to eq("Email address")
+  end
+
   it "has an avatar configuration block option" do
     config.avatar = block
     expect(config.avatar).to eq(block)
