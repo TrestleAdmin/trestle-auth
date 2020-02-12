@@ -17,6 +17,8 @@ module Trestle
 
       autoload :Base
       autoload :Basic
+      autoload :Devise
+      autoload :Warden
     end
 
     module Controller

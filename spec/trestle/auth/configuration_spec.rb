@@ -98,6 +98,36 @@ describe Trestle::Auth::Configuration do
     expect(config).to have_accessor(:logo)
   end
 
+  describe "#backend=" do
+    it "sets the backend configuration option with :basic" do
+      config.backend = :basic
+      expect(config.backend).to eq(Trestle::Auth::Backends::Basic)
+    end
+
+    it "sets the backend configuration option with :devise" do
+      config.backend = :devise
+      expect(config.backend).to eq(Trestle::Auth::Backends::Devise)
+    end
+
+    it "sets the backend configuration option with :warden" do
+      config.backend = :warden
+      expect(config.backend).to eq(Trestle::Auth::Backends::Warden)
+    end
+
+    it "sets the backend configuration option with a custom class" do
+      custom_class = Class.new
+
+      config.backend = custom_class
+      expect(config.backend).to eq(custom_class)
+    end
+
+    it "raises ArgumentError if an invalid option is provided" do
+      expect {
+        config.backend = :invalid
+      }.to raise_error(ArgumentError, "Invalid authentication backend: :invalid")
+    end
+  end
+
   it "has a configuration set for remember options" do
     expect(config.remember).to be_an_instance_of(Trestle::Auth::Configuration::Rememberable)
   end
@@ -161,6 +191,18 @@ describe Trestle::Auth::Configuration do
     it "has a cookie configuration block option" do
       expect(config).to have_accessor(:cookie)
       expect(config.cookie(user)).to eq({ value: user.remember_token, expires: user.remember_token_expires_at })
+    end
+  end
+
+  it "has a configuration set for Warden options" do
+    expect(config.warden).to be_an_instance_of(Trestle::Auth::Configuration::Warden)
+  end
+
+  describe Trestle::Auth::Configuration::Warden do
+    subject(:config) { Trestle::Auth::Configuration::Warden.new }
+
+    it "has a scope configuration option" do
+      expect(config).to have_accessor(:scope)
     end
   end
 end

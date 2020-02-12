@@ -55,6 +55,28 @@ module Trestle
       option :remember, Rememberable.new
 
       option :backend, Trestle::Auth::Backends::Basic
+
+      def backend=(backend)
+        assign(:backend, backend_class(backend))
+      end
+
+      option :warden, Warden.new
+
+    private
+      def backend_class(backend)
+        case backend
+        when :basic
+          Trestle::Auth::Backends::Basic
+        when :devise
+          Trestle::Auth::Backends::Devise
+        when :warden
+          Trestle::Auth::Backends::Warden
+        when Class
+          backend
+        else
+          raise ArgumentError, "Invalid authentication backend: #{backend.inspect}"
+        end
+      end
     end
   end
 end

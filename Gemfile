@@ -6,6 +6,7 @@ gemspec
 group :test do
   gem "capybara"
   gem "sqlite3", "~> 1.4"
+  gem "devise"
 end
 
 gem "sassc-rails"
