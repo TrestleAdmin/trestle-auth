@@ -6,6 +6,7 @@ require File.expand_path('dummy/config/environment', __dir__)
 
 require 'rspec/rails'
 require 'show_me_the_cookies'
+require 'timecop'
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
