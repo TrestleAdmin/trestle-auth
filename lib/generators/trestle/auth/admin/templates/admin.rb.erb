@@ -1,4 +1,4 @@
-Trestle.resource(:<%= plural_name %>, model: Trestle.config.auth.user_class, scope: Auth) do
+Trestle.resource(:<%= plural_name %>, model: <%= model %>, scope: Auth) do
   menu do
     group :configuration, priority: :last do
       item :<%= plural_name %>, icon: "fa fa-users"
@@ -10,8 +10,10 @@ Trestle.resource(:<%= plural_name %>, model: Trestle.config.auth.user_class, sco
       avatar_for(administrator)
     end
     column :email, link: true
+    <%- unless devise? -%>
     column :first_name
     column :last_name
+    <%- end -%>
     actions do |a|
       a.delete unless a.instance == current_user
     end
@@ -20,14 +22,33 @@ Trestle.resource(:<%= plural_name %>, model: Trestle.config.auth.user_class, sco
   form do |administrator|
     text_field :email
 
+    <%- unless devise? -%>
     row do
       col(sm: 6) { text_field :first_name }
       col(sm: 6) { text_field :last_name }
     end
 
+    <%- end -%>
     row do
       col(sm: 6) { password_field :password }
       col(sm: 6) { password_field :password_confirmation }
     end
   end
+  <%- if devise? -%>
+
+  update_instance do |instance, attrs|
+    if attrs[:password].blank?
+      attrs.delete(:password)
+      attrs.delete(:password_confirmation) if attrs[:password_confirmation].blank?
+    end
+
+    instance.assign_attributes(attrs)
+  end
+
+  after_action on: :update do
+    if Devise.sign_in_after_reset_password && instance == current_user
+      login!(instance)
+    end
+  end
+  <%- end -%>
 end
