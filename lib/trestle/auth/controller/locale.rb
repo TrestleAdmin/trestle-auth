@@ -10,7 +10,7 @@ module Trestle
 
       protected
         def set_locale
-          I18n.with_locale(Trestle.config.auth.locale.call(current_user) || I18n.default_locale) { yield }
+          I18n.with_locale(instance_exec(current_user, &Trestle.config.auth.locale) || I18n.default_locale) { yield }
         end
       end
     end
