@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 gemspec
 
 group :test do
-  gem 'coveralls',   require: false
-  gem 'simplecov',   require: false
+  gem "coveralls", require: false
+  gem "simplecov", require: false
 
   gem "capybara"
   gem "sqlite3", "~> 1.4"
