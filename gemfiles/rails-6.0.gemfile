@@ -1,8 +1,5 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in trestle-auth.gemspec
-gemspec
-
 group :test do
   gem "coveralls", require: false
 
@@ -11,8 +8,11 @@ group :test do
   gem "devise"
 end
 
+gem "rails", "~> 6.0.0"
 gem "sassc-rails"
 
 gem "rake", "~> 12.0"
 
 gem "trestle", github: "TrestleAdmin/trestle"
+
+gemspec path: "../"
