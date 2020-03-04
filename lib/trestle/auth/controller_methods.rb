@@ -3,10 +3,10 @@ module Trestle
     module ControllerMethods
       extend ActiveSupport::Concern
 
-      include Trestle::Auth::Controller::Authentication
-      include Trestle::Auth::Controller::Authorization
-      include Trestle::Auth::Controller::Locale
-      include Trestle::Auth::Controller::TimeZone
+      include Controller::Authentication
+      include Controller::Authorization
+      include Controller::Locale
+      include Controller::TimeZone
     end
   end
 end
