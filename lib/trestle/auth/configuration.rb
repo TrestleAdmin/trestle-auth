@@ -60,6 +60,8 @@ module Trestle
       option :enable_login, true
       option :enable_logout, true
 
+      option :login_url, -> { login_url }, evaluate: false
+
       option :redirect_on_login, -> { Trestle.config.path }, evaluate: false
       option :redirect_on_logout, -> { login_url }, evaluate: false
 

@@ -70,6 +70,12 @@ config.auth.user_admin = -> { :"auth/<%= model.underscore.pluralize %>" }
 # config.auth.enable_login = true
 # config.auth.enable_logout = true
 
+# Specify the path to redirect to when login is required.
+# Defaults to the trestle-auth login page. You may wish to change
+# this if you have also disabled the login form/action above.
+#
+# config.auth.login_url = -> { "/users/sign_in" }
+
 # Specify the logo used on the login form.
 # If not specified, will fall back to config.site_logo,
 # config.site_logo_small or config.site_title.

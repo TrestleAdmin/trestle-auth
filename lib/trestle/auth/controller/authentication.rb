@@ -42,7 +42,7 @@ module Trestle
 
         def login_required!
           authentication_backend.store_location(request.fullpath)
-          redirect_to trestle.login_url
+          redirect_to instance_exec(&Trestle.config.auth.login_url)
           false
         end
 
