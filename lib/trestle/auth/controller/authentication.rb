@@ -7,8 +7,8 @@ module Trestle
         included do
           helper_method :current_user, :logged_in?, :authentication_scope
 
-          before_action :authenticate_user
-          before_action :require_authenticated_user
+          prepend_before_action :require_authenticated_user
+          prepend_before_action :authenticate_user
         end
 
       protected
