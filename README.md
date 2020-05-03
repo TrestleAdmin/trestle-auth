@@ -13,7 +13,7 @@
 
 These instructions assume you have a working Trestle application. See the [Getting Started](https://github.com/TrestleAdmin/trestle#getting-started) section in the Trestle README.
 
-To integrate trestle-auth, first add it to your application's Gemfile, and the run `bundle install`:
+To integrate trestle-auth, first add it to your application's Gemfile, and then run `bundle install`:
 
 ```ruby
 gem 'trestle-auth'
@@ -22,7 +22,7 @@ gem 'trestle-auth'
 As of version 0.4.0, trestle-auth now supports multiple authentication backends including Devise/Warden.
 
 
-### 1. Built-in Integration
+### Option 1: Built-in Integration
 
 Run the install generator to add the configuration to `config/initializers/trestle.rb`, and generate a `User` model and admin resource.
 
@@ -39,7 +39,7 @@ User.create(email: "admin@example.com", password: "password", first_name: "Admin
 After restarting your Rails server, any attempt to access a page within your admin will redirect you to the login page.
 
 
-### 2. Devise Integration
+### Option 2: Devise Integration
 
 If you already have an existing user model and Devise integration, you can configure trestle-auth to use that instead.
 
