@@ -3,7 +3,8 @@ module Trestle
     module Backends
       extend ActiveSupport::Autoload
 
-      autoload :Base
+      require_relative "backends/base"
+
       autoload :Basic
       autoload :Devise
       autoload :Warden

@@ -2,9 +2,8 @@ module Trestle
   module Auth
     module ModelMethods
       extend ActiveSupport::Concern
-      extend ActiveSupport::Autoload
 
-      autoload :Rememberable
+      require_relative "model_methods/rememberable"
 
       included do
         has_secure_password

@@ -1,10 +1,8 @@
 module Trestle
   module Auth
     class Configuration
-      extend ActiveSupport::Autoload
-
-      autoload :Rememberable
-      autoload :Warden
+      require_relative "configuration/rememberable"
+      require_relative "configuration/warden"
 
       include Configurable
 
