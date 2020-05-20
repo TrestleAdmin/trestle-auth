@@ -13,6 +13,7 @@ end
 gem "sassc-rails"
 gem "devise"
 gem "cancancan"
+gem "pundit"
 
 gem "rake", "~> 12.0"
 

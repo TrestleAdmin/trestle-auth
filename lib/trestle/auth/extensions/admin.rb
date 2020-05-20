@@ -35,7 +35,7 @@ module Trestle
               if ability = (options_or_class[:cancancan] || options_or_class[:cancan])
                 authorize_with(CanCanAdapter.build(ability))
               elsif policy = options_or_class[:pundit]
-                raise NotImplementError
+                authorize_with(PunditAdapter.build(policy))
               else
                 raise ArgumentError, "unrecognized options"
               end
