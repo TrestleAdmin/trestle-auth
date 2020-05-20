@@ -160,6 +160,33 @@ describe Trestle::Auth::Configuration do
     end
   end
 
+  describe "#authorize_with" do
+    it "sets the global authorization adapter with :cancan" do
+      config.authorize_with cancan: -> { Ability }
+      expect(config.authorization_adapter).to be < Trestle::Auth::CanCanAdapter
+      expect(config.authorization_adapter.ability_class).to eq(Ability)
+    end
+
+    it "sets the global authorization adapter with :pundit" do
+      config.authorize_with pundit: -> { TestPolicy }
+      expect(config.authorization_adapter).to be < Trestle::Auth::PunditAdapter
+      expect(config.authorization_adapter.policy_class).to eq(TestPolicy)
+    end
+
+    it "sets the global authorization adapter with a custom class" do
+      custom_class = Class.new
+
+      config.authorize_with -> { custom_class }
+      expect(config.authorization_adapter).to eq(custom_class)
+    end
+
+    it "raises ArgumentError if an invalid option is provided" do
+      expect {
+        config.authorize_with invalid: :option
+      }.to raise_error(ArgumentError, "unrecognized options")
+    end
+  end
+
   it "has a configuration set for remember options" do
     expect(config.remember).to be_an_instance_of(Trestle::Auth::Configuration::Rememberable)
   end

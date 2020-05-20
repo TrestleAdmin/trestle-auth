@@ -2,12 +2,16 @@ module Trestle
   module Auth
     class PunditAdapter
       class << self
-        attr_accessor :policy_class
+        attr_writer :policy_class
 
         def build(policy_class)
           Class.new(self).tap do |klass|
             klass.policy_class = policy_class
           end
+        end
+
+        def policy_class
+          Auth.constantize(@policy_class)
         end
       end
 

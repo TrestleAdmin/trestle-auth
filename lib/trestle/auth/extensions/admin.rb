@@ -5,7 +5,7 @@ module Trestle
         extend ActiveSupport::Concern
 
         included do
-          singleton_class.attr_accessor :authorization_adapter
+          singleton_class.attr_writer :authorization_adapter
         end
 
         def authorized?(action, target=nil)
@@ -23,6 +23,10 @@ module Trestle
         module ClassMethods
           def authorize?
             !!authorization_adapter
+          end
+
+          def authorization_adapter
+            @authorization_adapter || Trestle.config.auth.authorization_adapter
           end
         end
 

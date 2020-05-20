@@ -9,7 +9,7 @@ module Trestle
 
       config.to_prepare do
         Trestle::ApplicationController.send(:include, Trestle::Auth::ControllerMethods)
-        Trestle::Resource::Controller.send(:include, Trestle::Auth::Extensions::ResourceController)
+        Trestle::ResourceController.send(:include, Trestle::Auth::Extensions::ResourceController)
       end
 
       initializer :extensions do

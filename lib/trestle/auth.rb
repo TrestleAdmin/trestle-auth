@@ -28,6 +28,16 @@ module Trestle
 
     require_relative "auth/adapters/can_can_adapter"
     require_relative "auth/adapters/pundit_adapter"
+
+    def self.constantize(klass)
+      if klass.is_a?(String)
+        klass.safe_constantize
+      elsif klass.respond_to?(:call)
+        klass.call
+      else
+        klass
+      end
+    end
   end
 
   Configuration.option :auth, Auth::Configuration.new
