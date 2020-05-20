@@ -12,9 +12,8 @@ module Trestle
           singleton_class.send(:prepend, ResourceCollection)
         end
 
-        # Override the default target
-        def authorized?(action, target=model)
-          super
+        def default_authorization_target
+          model
         end
       end
     end

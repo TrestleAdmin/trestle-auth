@@ -41,10 +41,6 @@ module Trestle
         def authorization_target
           admin if defined?(admin)
         end
-
-        def root_authorization_target
-          authorization_target
-        end
       end
     end
   end

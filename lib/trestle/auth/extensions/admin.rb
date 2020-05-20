@@ -9,7 +9,7 @@ module Trestle
         end
 
         def authorized?(action, target=nil)
-          authorization_adapter.authorized?(action, target)
+          authorization_adapter.authorized?(action, target || default_authorization_target)
         end
 
         def authorization_adapter
@@ -18,6 +18,10 @@ module Trestle
 
         def current_user
           @context.send(:current_user)
+        end
+
+        def default_authorization_target
+          self
         end
 
         module ClassMethods
