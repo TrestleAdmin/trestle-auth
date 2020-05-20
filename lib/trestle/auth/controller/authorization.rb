@@ -39,11 +39,11 @@ module Trestle
         end
 
         def authorization_target
-          nil
+          admin if defined?(admin)
         end
 
         def root_authorization_target
-          nil
+          authorization_target
         end
       end
     end
