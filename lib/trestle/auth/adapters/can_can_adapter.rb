@@ -11,9 +11,11 @@ module Trestle
         end
       end
 
+      delegate :ability_class, to: :class
+
       def initialize(admin, user)
         @admin, @user = admin, user
-        @ability = self.class.ability_class.new(user)
+        @ability = ability_class.new(user)
       end
 
       def authorized?(action, target=nil)
