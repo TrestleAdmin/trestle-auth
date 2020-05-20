@@ -26,12 +26,16 @@ module Trestle
         end
 
         def access_denied!(exception)
-          flash[:error] = {
-            title:   t("admin.flash.unauthorized.title", default: "Access Denied!"),
-            message: t("admin.flash.unauthorized.message", default: "You are not authorized to access this page.", message: exception.message)
-          }
+          if dialog_request?
+            head :forbidden
+          else
+            flash[:error] = {
+              title:   t("admin.flash.unauthorized.title", default: "Access Denied!"),
+              message: t("admin.flash.unauthorized.message", default: "You are not authorized to access this page.", message: exception.message)
+            }
 
-          redirect_to instance_exec(&Trestle.config.auth.redirect_on_access_denied)
+            redirect_to instance_exec(&Trestle.config.auth.redirect_on_access_denied)
+          end
         end
 
         def authorization_target
