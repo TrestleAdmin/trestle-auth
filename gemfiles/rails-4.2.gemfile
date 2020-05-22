@@ -5,11 +5,12 @@ group :test do
   gem "capybara"
 
   gem "sqlite3", "~> 1.3.13"
-  gem "devise"
 end
 
 gem "rails", "~> 4.2.0"
 gem "sassc-rails"
+gem "cancancan"
+gem "pundit"
 
 gem "rake", "~> 12.0"
 
