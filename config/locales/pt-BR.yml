@@ -6,3 +6,10 @@ pt-BR:
       logout: "Sair"
       error: "Email ou Senha incorretos."
       remember_me: "Lembrar-me"
+
+    auth/account:
+      titles:
+        edit: "Minha Conta"
+
+      breadcrumbs:
+        index: "Minha Conta"

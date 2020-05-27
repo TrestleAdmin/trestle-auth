@@ -12,9 +12,9 @@ config.auth.warden.scope = :<%= model.underscore.singularize %>
 #
 config.auth.user_class = -> { <%= model %> }
 
-# Specify the Trestle admin for managing administrator users.
+# Specify the Trestle admin for managing the current user (My Account).
 #
-config.auth.user_admin = -> { :"auth/<%= model.underscore.pluralize %>" }
+config.auth.user_admin = -> { :"auth/account" }
 
 # Customize the rendering of user avatars. Can be disabled by setting to false.
 # Defaults to the Gravatar based on the user's email address.

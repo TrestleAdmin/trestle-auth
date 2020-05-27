@@ -6,3 +6,10 @@ es:
       logout: "Sair"
       error: "Email o contraseña incorrectos."
       remember_me: "Recuérdame"
+
+    auth/account:
+      titles:
+        edit: "Mi Conta"
+
+      breadcrumbs:
+        index: "Mi Conta"

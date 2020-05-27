@@ -7,6 +7,7 @@ module Trestle
         argument :model, type: :string, default: "Administrator"
 
         class_option :devise, type: :boolean, default: false, desc: "Setup trestle-auth with Devise integration"
+        class_option :skip_account, type: :boolean, default: false, desc: "Skip creation of the current account admin"
 
         source_root File.expand_path("../templates", __FILE__)
 
@@ -28,6 +29,10 @@ module Trestle
 
         def generate_admin
           generate "trestle:auth:admin", model, ("--devise" if devise?)
+        end
+
+        def generate_account
+          generate "trestle:auth:account", model, ("--devise" if devise?) unless options[:skip_account]
         end
 
         def devise?

@@ -6,3 +6,10 @@ pl:
       logout: "Wyloguj się"
       error: "Nieprawidłowe dane logowania."
       remember_me: "Zapamiętaj mnie"
+
+    auth/account:
+      titles:
+        edit: "Moje konto"
+
+      breadcrumbs:
+        index: "Moje konto"
