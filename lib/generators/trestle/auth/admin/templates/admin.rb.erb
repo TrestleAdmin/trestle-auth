@@ -45,10 +45,11 @@ Trestle.resource(:<%= plural_name %>, model: <%= model %>, scope: Auth) do
     instance.assign_attributes(attrs)
   end
 
+  # Log the current user back in if their password was changed
   after_action on: :update do
-    if Devise.sign_in_after_reset_password && instance == current_user
+    if instance == current_user && instance.encrypted_password_previously_changed?
       login!(instance)
     end
-  end
+  end if Devise.sign_in_after_reset_password
   <%- end -%>
 end
