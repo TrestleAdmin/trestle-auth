@@ -1,13 +1,13 @@
 Trestle.resource(:<%= plural_name %>, model: <%= model %>, scope: Auth) do
   menu do
     group :configuration, priority: :last do
-      item :<%= plural_name %>, icon: "fa fa-users"
+      item :<%= plural_name %>, icon: "fas fa-users"
     end
   end
 
   table do
-    column :avatar, header: false do |administrator|
-      avatar_for(administrator)
+    column :avatar, header: false do |<%= parameter_name %>|
+      avatar_for(<%= parameter_name %>)
     end
     column :email, link: true
     <%- unless devise? -%>
@@ -19,7 +19,7 @@ Trestle.resource(:<%= plural_name %>, model: <%= model %>, scope: Auth) do
     end
   end
 
-  form do |administrator|
+  form do |<%= parameter_name %>|
     text_field :email
 
     <%- unless devise? -%>
@@ -36,6 +36,7 @@ Trestle.resource(:<%= plural_name %>, model: <%= model %>, scope: Auth) do
   end
   <%- if devise? -%>
 
+  # Ignore the password parameters if they are blank
   update_instance do |instance, attrs|
     if attrs[:password].blank?
       attrs.delete(:password)

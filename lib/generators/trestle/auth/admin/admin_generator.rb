@@ -19,8 +19,16 @@ module Trestle
         end
 
       protected
+        def parameter_name
+          singular_name
+        end
+
         def plural_name
-          model.demodulize.underscore.pluralize
+          singular_name.pluralize
+        end
+
+        def singular_name
+          model.demodulize.underscore
         end
       end
     end
