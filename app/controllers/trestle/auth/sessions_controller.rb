@@ -1,8 +1,8 @@
 class Trestle::Auth::SessionsController < Trestle::ApplicationController
   layout 'trestle/auth'
 
-  skip_before_action :authenticate_user, only: [:new, :create]
-  skip_before_action :require_authenticated_user
+  skip_before_action :authenticate_user, only: [:new, :create], raise: false
+  skip_before_action :require_authenticated_user, raise: false
 
   def new
   end
