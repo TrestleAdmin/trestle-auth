@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/TrestleAdmin/trestle-auth"
 
-  spec.add_dependency "trestle", "~> 0.9.0"
+  spec.add_dependency "trestle", "~> 0.9.0", ">= 0.9.3"
   spec.add_dependency "bcrypt",  "~> 3.1.7"
 
   spec.add_development_dependency "rspec-rails",         "~> 3.0"
