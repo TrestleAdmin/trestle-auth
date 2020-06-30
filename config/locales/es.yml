@@ -1,7 +1,7 @@
 es:
   admin:
     auth:
-      my_account: "Mi Conta"
+      my_account: "Mi Cuenta"
       login: "Inicio de sesión"
       logout: "Sair"
       error: "Email o contraseña incorrectos."
@@ -9,7 +9,7 @@ es:
 
     auth/account:
       titles:
-        edit: "Mi Conta"
+        edit: "Mi Cuenta"
 
       breadcrumbs:
-        index: "Mi Conta"
+        index: "Mi Cuenta"
