@@ -149,10 +149,10 @@ Finally, you can filter the collection scope using a custom scope block:
 ```ruby
 authorize do
   scope do |collection|
-    if user.admin?
+    if current_user.admin?
       collection.all
     else
-      collection.where(user: user)
+      collection.where(user: current_user)
     end
   end
 end
