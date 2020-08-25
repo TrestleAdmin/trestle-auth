@@ -35,9 +35,12 @@ module Trestle
         end
 
         module Builder
-          # def authorize(&block)
-          # end
+          # Define an authorization block for the admin using the built-in DSL.
+          def authorize(&block)
+            authorize_with(DSL.build(&block))
+          end
 
+          # Specify the adapter class to use to authorize this admin.
           def authorize_with(options_or_class)
             if options_or_class.is_a?(Hash)
               if ability = (options_or_class[:cancancan] || options_or_class[:cancan])

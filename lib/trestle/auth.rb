@@ -26,8 +26,11 @@ module Trestle
     require_relative "auth/extensions/resource_controller"
     require_relative "auth/extensions/toolbars"
 
+    require_relative "auth/adapters/builtin_adapter"
     require_relative "auth/adapters/can_can_adapter"
     require_relative "auth/adapters/pundit_adapter"
+
+    require_relative "auth/dsl"
 
     def self.constantize(klass)
       if klass.is_a?(String)

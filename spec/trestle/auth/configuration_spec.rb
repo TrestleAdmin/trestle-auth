@@ -187,6 +187,16 @@ describe Trestle::Auth::Configuration do
     end
   end
 
+  describe "#authorize" do
+    it "sets the global authorization block using the built-in DSL" do
+      config.authorize do
+        access! { current_user.admin? }
+      end
+
+      expect(config.authorization_adapter).to be < Trestle::Auth::BuiltinAdapter
+    end
+  end
+
   it "has a configuration set for remember options" do
     expect(config.remember).to be_an_instance_of(Trestle::Auth::Configuration::Rememberable)
   end

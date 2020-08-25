@@ -92,6 +92,10 @@ module Trestle
         end
       end
 
+      def authorize(&block)
+        authorize_with(DSL.build(&block))
+      end
+
       option :warden, Warden.new
     end
   end
