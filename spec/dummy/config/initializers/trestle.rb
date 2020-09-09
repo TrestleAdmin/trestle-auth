@@ -240,4 +240,12 @@ Trestle.configure do |config|
   # config.auth.remember.cookie, ->(user) {
   #   { value: user.remember_token, expires: user.remember_token_expires_at }
   # }
+
+  config.auth.redirect_on_access_denied = -> {
+    if authorized?(:index)
+      admin.path(:index)
+    else
+      Trestle.config.root
+    end
+  }
 end
