@@ -1,10 +1,11 @@
 const path = require('path');
 
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 
 module.exports = {
+  mode: 'production',
   entry: {
     bundle: path.resolve(__dirname, 'frontend/index.scss'),
     userbox: path.resolve(__dirname, 'frontend/userbox.scss')
@@ -13,18 +14,8 @@ module.exports = {
     path: path.resolve(__dirname, 'app/assets/bundle/trestle/auth')
   },
   optimization: {
-    splitChunks: {
-      cacheGroups: {
-        styles: {
-          name: 'bundle',
-          test: /\.css$/,
-          chunks: 'all',
-          enforce: true
-        }
-      }
-    },
     minimizer: [
-      new OptimizeCSSAssetsPlugin({})
+      new CssMinimizerPlugin({})
     ]
   },
   module: {
@@ -34,14 +25,23 @@ module.exports = {
         use: [
           { loader: MiniCssExtractPlugin.loader },
           { loader: 'css-loader' },
-          { loader: 'postcss-loader', options: { plugins: [ require('autoprefixer') ] } },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  ['autoprefixer', {}]
+                ]
+              }
+            }
+          },
           { loader: 'sass-loader' }
         ]
       }
     ]
   },
   plugins: [
-    new FixStyleOnlyEntriesPlugin(),
+    new RemoveEmptyScriptsPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].css'
     })
