@@ -10,7 +10,7 @@
   <% end %>
 
   <% if show_dropdown %>
-    <%= link_to content, "#", data: { toggle: 'dropdown' } %>
+    <%= link_to content, "#", data: { bs_toggle: 'dropdown', bs_offset: "0,7" } %>
   <% else %>
     <%= content %>
   <% end %>
