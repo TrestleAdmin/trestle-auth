@@ -52,11 +52,19 @@ module Trestle
           path = File.expand_path(find_in_source_paths(path.to_s))
           context = options.delete(:context) || instance_eval("binding")
 
-          capturable_erb = CapturableERB.new(::File.binread(path), trim_mode: "-", eoutvar: "@output_buffer")
-
-          content = capturable_erb.tap do |erb|
+          content = capturable_erb(path).tap do |erb|
             erb.filename = path
           end.result(context)
+        end
+
+        def capturable_erb(path)
+          match = ERB.version.match(/(\d+\.\d+\.\d+)/)
+
+          if match && match[1] >= "2.2.0" # Ruby 2.6+
+            CapturableERB.new(::File.binread(path), trim_mode: "-", eoutvar: "@output_buffer")
+          else
+            CapturableERB.new(::File.binread(path), nil, "-", "@output_buffer")
+          end
         end
       end
     end

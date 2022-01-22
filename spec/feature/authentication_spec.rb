@@ -47,6 +47,21 @@ feature "Authentication with basic backend" do
     end
   end
 
+  context "routing constraint" do
+    scenario "unauthenticated" do
+      visit "/admin/custom"
+      expect(page.status_code).to eq(404)
+    end
+
+    scenario "authenticated" do
+      login
+
+      visit "/admin/custom"
+      expect(page).to have_current_path("/admin/custom")
+      expect(page).to have_content("Hello from custom controller")
+    end
+  end
+
   def create_administrator
     Administrator.create!(first_name: "Admin", last_name: "User", email: "admin@example.com", password: "password")
   end

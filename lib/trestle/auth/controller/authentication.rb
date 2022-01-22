@@ -9,6 +9,9 @@ module Trestle
 
           prepend_before_action :require_authenticated_user
           prepend_before_action :authenticate_user
+
+          # Ensure that CSRF protection happens before authentication
+          protect_from_forgery prepend: true
         end
 
       protected
