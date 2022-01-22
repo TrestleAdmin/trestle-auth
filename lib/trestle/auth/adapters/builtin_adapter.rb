@@ -17,13 +17,13 @@ module Trestle
         "create" => "create!"
       }
 
-      def initialize(admin, user)
-        @admin, @user = admin, user
+      def initialize(context)
+        @context = context
       end
 
       def authorized?(action, target=nil)
         if block = block_for(action)
-          @admin.instance_exec(target, &block)
+          @context.instance_exec(target, &block)
         else
           false
         end
@@ -31,7 +31,7 @@ module Trestle
 
       def scope(collection)
         if self.class.scope
-          @admin.instance_exec(collection, &self.class.scope)
+          @context.instance_exec(collection, &self.class.scope)
         else
           collection
         end

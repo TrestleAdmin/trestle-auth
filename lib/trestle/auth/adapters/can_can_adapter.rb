@@ -17,17 +17,25 @@ module Trestle
 
       delegate :ability_class, to: :class
 
-      def initialize(admin, user)
-        @admin, @user = admin, user
-        @ability = ability_class.new(user)
+      def initialize(context)
+        @context = context
       end
 
       def authorized?(action, target=nil)
-        @ability.can?(action, target)
+        ability.can?(action, target)
       end
 
       def scope(collection)
-        collection.accessible_by(@ability)
+        collection.accessible_by(ability)
+      end
+
+    protected
+      def ability
+        @ability ||= ability_class.new(current_user)
+      end
+
+      def current_user
+        @context.send(:current_user)
       end
     end
   end

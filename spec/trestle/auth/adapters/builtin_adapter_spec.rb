@@ -3,11 +3,12 @@ require "spec_helper"
 describe Trestle::Auth::BuiltinAdapter do
   let(:admin) { double }
   let(:user) { double }
+  let(:context) { double(current_user: :user) }
 
   let(:block) { Proc.new {} }
 
   let(:adapter_class) { Class.new(described_class) }
-  subject(:adapter) { adapter_class.new(admin, user) }
+  subject(:adapter) { adapter_class.new(context) }
 
   describe "#authorized?" do
     let(:instance) { double }
@@ -24,7 +25,7 @@ describe Trestle::Auth::BuiltinAdapter do
       end
 
       it "evaluates the action block in the context of the admin" do
-        expect(admin).to receive(:instance_exec).with(instance, &block).and_return(true)
+        expect(context).to receive(:instance_exec).with(instance, &block).and_return(true)
         expect(adapter.authorized?("destroy", instance)).to be true
       end
     end
@@ -35,7 +36,7 @@ describe Trestle::Auth::BuiltinAdapter do
       end
 
       it "evaluates the aliased action block in the context of the admin" do
-        expect(admin).to receive(:instance_exec).with(nil, &block).and_return(true)
+        expect(context).to receive(:instance_exec).with(nil, &block).and_return(true)
         expect(adapter.authorized?("index")).to be true
       end
     end
@@ -46,7 +47,7 @@ describe Trestle::Auth::BuiltinAdapter do
       end
 
       it "evaluates the access block in the context of the admin" do
-        expect(admin).to receive(:instance_exec).with(instance, &block).and_return(true)
+        expect(context).to receive(:instance_exec).with(instance, &block).and_return(true)
         expect(adapter.authorized?("show", instance)).to be true
       end
     end
@@ -63,7 +64,7 @@ describe Trestle::Auth::BuiltinAdapter do
       end
 
       it "evaluates the scope block in the context of the admin" do
-        expect(admin).to receive(:instance_exec).with(collection, &block).and_return(scoped_collection)
+        expect(context).to receive(:instance_exec).with(collection, &block).and_return(scoped_collection)
         expect(adapter.scope(collection)).to eq(scoped_collection)
       end
     end

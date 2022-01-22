@@ -13,11 +13,7 @@ module Trestle
         end
 
         def authorization_adapter
-          @authorization_adapter ||= self.class.authorization_adapter.new(self, current_user)
-        end
-
-        def current_user
-          @context.send(:current_user)
+          @authorization_adapter ||= self.class.authorization_adapter.new(@context)
         end
 
         def default_authorization_target
