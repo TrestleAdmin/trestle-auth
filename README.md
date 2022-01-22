@@ -66,12 +66,12 @@ Trestle will use the Policy class to authorize based on the action name, as well
 
 #### *** TO BE IMPLEMENTED ***:
 
-Pundit can be configured globally using `config.authorize_with pundit: :auto` within `config/initializers/trestle.rb`. The Pundit policy will try to be automatically inferred, and a `Pundit::NotDefinedError` will be raised if it cannot be.
+Pundit can be configured globally using `config.auth.authorize_with pundit: :auto` within `config/initializers/trestle.rb`. The Pundit policy will try to be automatically inferred, and a `Pundit::NotDefinedError` will be raised if it cannot be.
 
 A custom scope can be specified with the `scope` option:
 
 ```ruby
-config.authorize_with pundit: :auto, scope: :admin
+config.auth.authorize_with pundit: :auto, scope: :admin
 ```
 
 
@@ -80,7 +80,7 @@ config.authorize_with pundit: :auto, scope: :admin
 Specify your CanCanCan `Ability` class globally using `authorize_with` in your `config/initializers/trestle.rb` file:
 
 ```ruby
-config.authorize_with cancan: -> { Ability }
+config.auth.authorize_with cancan: -> { Ability }
 ```
 
 Passing the class wrapped in a Proc (or as a String) ensures that any changes will be reloaded and reflected automatically.
