@@ -7,6 +7,8 @@ module Trestle
         included do
           before_action :authorize, if: :authorize?
           helper_method :authorized?
+          helper_method :authorizer_cache
+
           rescue_from AccessDenied, with: :access_denied!
         end
 
@@ -40,6 +42,10 @@ module Trestle
 
         def authorization_target
           admin if defined?(admin)
+        end
+
+        def authorizer_cache
+          @authorizer_cache ||= {}
         end
       end
     end

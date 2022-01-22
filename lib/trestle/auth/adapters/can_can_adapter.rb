@@ -31,7 +31,7 @@ module Trestle
 
     protected
       def ability
-        @ability ||= ability_class.new(current_user)
+        @context.send(:authorizer_cache)[ability_class] ||= ability_class.new(current_user)
       end
 
       def current_user
