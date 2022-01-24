@@ -4,9 +4,11 @@ source 'https://rubygems.org'
 gemspec
 
 group :test do
-  gem "coveralls", require: false
+  gem "rspec-rails", "~> 5.0"
 
+  gem "coveralls", require: false
   gem "capybara"
+
   gem "sqlite3", "~> 1.4"
   gem "devise"
 end
