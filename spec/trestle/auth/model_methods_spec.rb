@@ -36,7 +36,7 @@ describe Trestle::Auth::ModelMethods::Rememberable do
         subject.remember_me!
 
         expect(subject.remember_token).to match(/[A-Za-z0-9_-]{20}/)
-        expect(subject.remember_token_expires_at).to eq(Time.now + Trestle.config.auth.remember.for)
+        expect(subject.remember_token_expires_at).to be_within(1.second).of(Time.now + Trestle.config.auth.remember.for)
       end
     end
   end

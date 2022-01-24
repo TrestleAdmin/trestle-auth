@@ -7,16 +7,12 @@ before_install:
   - gem install bundler
 
 rvm:
-  - 2.6.5
+  - 2.7.5
 
 gemfile:
   - gemfiles/rails-5.0.gemfile
   - gemfiles/rails-5.1.gemfile
   - gemfiles/rails-5.2.gemfile
   - gemfiles/rails-6.0.gemfile
-
-jobs:
-  include:
-    gemfile: gemfiles/rails-4.2.gemfile
-    before_install:
-      - gem install bundler -v '< 2'
+  - gemfiles/rails-6.1.gemfile
+  - gemfiles/rails-7.0.gemfile

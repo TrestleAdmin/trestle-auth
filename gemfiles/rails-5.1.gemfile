@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 group :test do
+  gem "rspec-rails", "~> 4.1.2"
+
   gem "coveralls", require: false
   gem "capybara"
 
