@@ -14,18 +14,37 @@ feature "Authorization using Pundit" do
     Administrator.create!({ first_name: "Admin", last_name: "User", email: "admin@example.com", password: "password" }.merge(attrs))
   end
 
-  scenario "prevent access to unauthorized users" do
-    login
-    visit "/admin/pundit"
+  context "plain admin" do
+    scenario "prevent access to unauthorized users" do
+      login
+      visit "/admin/pundit"
 
-    expect(page).to have_current_path("/admin")
-    expect(page).to have_content("You are not authorized to access this page.")
+      expect(page).to have_current_path("/admin")
+      expect(page).to have_content("You are not authorized to access this page.")
+    end
+
+    scenario "grant access to authorized users" do
+      login(email: "super@example.com")
+      visit "/admin/pundit"
+
+      expect(page).to have_current_path("/admin/pundit")
+    end
   end
 
-  scenario "grant access to authorized users" do
-    login(email: "super@example.com")
-    visit "/admin/pundit"
+  context "resourceful admin" do
+    scenario "prevent access to unauthorized users" do
+      login_as(@regular_admin)
+      visit "/admin/pundit_resource/#{@super_admin.id}"
 
-    expect(page).to have_current_path("/admin/pundit")
+      expect(page).to have_current_path("/admin")
+      expect(page).to have_content("You are not authorized to access this page.")
+    end
+
+    scenario "grant access to authorized users" do
+      login_as(@regular_admin)
+      visit "/admin/pundit_resource/#{@regular_admin.id}"
+
+      expect(page).to have_current_path("/admin/pundit_resource/#{@regular_admin.id}")
+    end
   end
 end

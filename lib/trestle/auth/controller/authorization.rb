@@ -6,6 +6,7 @@ module Trestle
 
         included do
           before_action :authorize, if: :authorize?
+
           helper_method :authorized?
           helper_method :authorizer_cache
 

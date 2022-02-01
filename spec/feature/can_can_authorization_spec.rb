@@ -14,18 +14,37 @@ feature "Authorization using CanCanCan" do
     Administrator.create!({ first_name: "Admin", last_name: "User", email: "admin@example.com", password: "password" }.merge(attrs))
   end
 
-  scenario "prevent access to unauthorized users" do
-    login
-    visit "/admin/cancancan"
+  context "plain admin" do
+    scenario "prevent access to unauthorized users" do
+      login
+      visit "/admin/cancancan"
 
-    expect(page).to have_current_path("/admin")
-    expect(page).to have_content("You are not authorized to access this page.")
+      expect(page).to have_current_path("/admin")
+      expect(page).to have_content("You are not authorized to access this page.")
+    end
+
+    scenario "grant access to authorized users" do
+      login(email: "super@example.com")
+      visit "/admin/cancancan"
+
+      expect(page).to have_current_path("/admin/cancancan")
+    end
   end
 
-  scenario "grant access to authorized users" do
-    login(email: "super@example.com")
-    visit "/admin/cancancan"
+  context "resourceful admin" do
+    scenario "prevent access to unauthorized users" do
+      login_as(@regular_admin)
+      visit "/admin/cancancan_resource/#{@super_admin.id}"
 
-    expect(page).to have_current_path("/admin/cancancan")
+      expect(page).to have_current_path("/admin")
+      expect(page).to have_content("You are not authorized to access this page.")
+    end
+
+    scenario "grant access to authorized users" do
+      login_as(@regular_admin)
+      visit "/admin/cancancan_resource/#{@regular_admin.id}"
+
+      expect(page).to have_current_path("/admin/cancancan_resource/#{@regular_admin.id}")
+    end
   end
 end

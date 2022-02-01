@@ -15,6 +15,10 @@ module Trestle
         def logout
           click_link "Logout"
         end
+
+        def login_as(user)
+          login(email: user.email)
+        end
       end
     end
   end
