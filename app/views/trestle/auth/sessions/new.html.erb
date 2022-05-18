@@ -11,5 +11,9 @@
     </div>
   <% end -%>
 
+  <%= hook("auth.login.form.before") %>
+
   <%= render "form", f: f %>
+
+  <%= hook("auth.login.form.after") %>
 <% end %>
