@@ -14,17 +14,16 @@
     <title><%= Trestle.config.site_title %></title>
 
     <%= stylesheet_link_tag "trestle/admin", 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag "trestle/theme", 'data-turbolinks-track': 'reload' if Trestle.config.theme %>
     <%= stylesheet_link_tag "trestle/custom", 'data-turbolinks-track': 'reload' %>
 
     <%= stylesheet_link_tag "trestle/auth", 'data-turbolinks-track': 'reload' %>
 
-    <%= javascript_include_tag "turbolinks" if Trestle.config.turbolinks %>
+    <%= render "trestle/theme" %>
 
     <%= hook "auth.head" %>
   </head>
 
-  <body class="auth-body theme-bg-dark">
+  <body class="auth-body theme-bg">
     <main class="container">
       <%= yield %>
     </main>
