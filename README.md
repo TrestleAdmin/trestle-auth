@@ -1,7 +1,7 @@
 # Trestle Authentication (trestle-auth)
 
 [![RubyGem](https://img.shields.io/gem/v/trestle-auth.svg?style=flat&colorB=4065a9)](https://rubygems.org/gems/trestle-auth)
-[![Travis](https://img.shields.io/travis/TrestleAdmin/trestle-auth.svg?style=flat)](https://travis-ci.org/TrestleAdmin/trestle-auth)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/TrestleAdmin/trestle-auth/rspec.yml?style=flat)](https://github.com/TrestleAdmin/trestle-auth/actions)
 [![Coveralls](https://img.shields.io/coveralls/TrestleAdmin/trestle-auth.svg?style=flat)](https://coveralls.io/github/TrestleAdmin/trestle-auth)
 
 > Authentication plugin for the Trestle admin framework
