@@ -3,14 +3,14 @@ source 'https://rubygems.org'
 group :test do
   gem "rspec-rails"
 
-  gem "coveralls_reborn", require: false
+  gem "coveralls_rebortn", require: false
   gem "capybara"
 end
 
-gem "rails", "~> 6.0.0"
+gem "rails", "~> 7.1.0"
 
-gem "sassc-rails"
 gem "sqlite3", "~> 1.4"
+gem "sassc-rails"
 gem "devise"
 
 gem "trestle", github: "TrestleAdmin/trestle"
