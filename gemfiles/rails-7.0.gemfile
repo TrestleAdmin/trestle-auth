@@ -1,23 +1,20 @@
 source 'https://rubygems.org'
 
 group :test do
-  gem "rspec-rails", "~> 5.0"
+  gem "rspec-rails"
 
-  gem "coveralls", require: false
+  gem "coveralls_reborn", require: false
   gem "capybara"
-
-  gem "sqlite3", "~> 1.4"
-  gem "devise"
 end
 
 gem "rails", "~> 7.0.0"
+
+gem "sqlite3", "~> 1.4"
 gem "sassc-rails"
 
 gem "devise"
 gem "cancancan"
 gem "pundit"
-
-gem "rake", "~> 12.0"
 
 gem "trestle", github: "TrestleAdmin/trestle"
 
