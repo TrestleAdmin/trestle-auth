@@ -13,8 +13,7 @@ group :test do
   gem "devise"
 end
 
+gem "rails", "~> 7.1.0"
 gem "sassc-rails"
-
-gem "rake", "~> 12.0"
 
 gem "trestle", github: "TrestleAdmin/trestle"
