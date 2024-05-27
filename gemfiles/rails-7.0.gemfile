@@ -10,9 +10,8 @@ end
 gem "rails", "~> 7.0.0"
 
 gem "sqlite3", "~> 1.4"
-gem "sassc-rails"
 gem "devise"
 
-gem "trestle", github: "TrestleAdmin/trestle"
+gem "trestle", github: "TrestleAdmin/trestle", branch: "hotwire"
 
 gemspec path: "../"
