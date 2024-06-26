@@ -8,11 +8,10 @@ group :test do
 end
 
 gem "rails", "~> 6.1.0"
-
+gem "sprockets-rails"
 gem "sqlite3", "~> 1.4"
-gem "sassc-rails"
 gem "devise"
 
-gem "trestle", github: "TrestleAdmin/trestle"
+gem "trestle", github: "TrestleAdmin/trestle", branch: "hotwire"
 
 gemspec path: "../"
