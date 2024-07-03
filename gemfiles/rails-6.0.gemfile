@@ -12,6 +12,6 @@ gem "sprockets-rails"
 gem "sqlite3", "~> 1.4"
 gem "devise"
 
-gem "trestle", github: "TrestleAdmin/trestle", branch: "hotwire"
+gem "trestle", github: "TrestleAdmin/trestle"
 
 gemspec path: "../"

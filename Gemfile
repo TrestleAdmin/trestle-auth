@@ -15,4 +15,4 @@ end
 
 gem "rails", "~> 7.1.0"
 
-gem "trestle", github: "TrestleAdmin/trestle", branch: "hotwire"
+gem "trestle", github: "TrestleAdmin/trestle"
