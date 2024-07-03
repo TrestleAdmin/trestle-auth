@@ -13,6 +13,7 @@ group :test do
 end
 
 gem "rails", "~> 7.1.0"
+gem "sprockets-rails"
 
 gem "devise"
 gem "cancancan"
