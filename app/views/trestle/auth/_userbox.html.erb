@@ -10,13 +10,13 @@
   <% end %>
 
   <% if show_dropdown %>
-    <%= link_to content, "#", data: { toggle: 'dropdown' } %>
+    <%= link_to content, "#", data: { bs_toggle: 'dropdown', bs_offset: "0,7" } %>
   <% else %>
     <%= content %>
   <% end %>
 
   <% if show_dropdown -%>
-  <ul class="dropdown-menu dropdown-menu-right">
+  <ul class="dropdown-menu dropdown-menu-end">
     <% if Trestle.config.auth.user_admin && user_admin = Trestle.lookup(Trestle.config.auth.user_admin) -%>
       <li><%= admin_link_to t("admin.auth.my_account", default: "My Account"), current_user, admin: user_admin, class: "dropdown-item" %></li>
     <% end -%>
