@@ -14,5 +14,6 @@ group :test do
 end
 
 gem "rails", "~> 7.1.0"
+gem "sprockets-rails"
 
 gem "trestle", github: "TrestleAdmin/trestle"
