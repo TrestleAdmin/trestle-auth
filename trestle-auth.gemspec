@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Authentication plugin for the Trestle admin framework"
   spec.homepage      = "https://www.trestle.io"
-  spec.license       = "LGPL-3.0"
+  spec.license       = "LGPL-3.0-only"
 
   spec.files         = Dir.chdir(File.expand_path('..', __FILE__)) do
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(spec)/}) }
