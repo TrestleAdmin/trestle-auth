@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in trestle-auth.gemspec
-gemspec
+group :development, :test do
+  gem "sprockets-rails"
+  # gem "propshaft"
+end
 
 group :test do
   gem "rspec-rails"
@@ -14,6 +16,7 @@ group :test do
 end
 
 gem "rails", "~> 7.1.0"
-gem "sprockets-rails"
-
 gem "trestle", github: "TrestleAdmin/trestle"
+
+# Specify your gem's dependencies in trestle-auth.gemspec
+gemspec
