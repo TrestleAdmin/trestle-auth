@@ -7,9 +7,9 @@
 
   .form-control {
     color: $auth-form-control-color;
-    font-size: 1.1rem;
+    font-size: 1rem;
 
-    padding: 1rem 0.75rem;
+    padding: 0.875rem 0.625rem;
 
     &:focus {
       outline-color: transparent;
@@ -32,14 +32,14 @@
 
   .input-group-text {
     color: $auth-form-control-icon-color;
-    padding: 0.375rem 0.25rem 0.375rem 1rem;
+    padding: 0.25rem 0.25rem 0.25rem 0.875rem;
   }
 
   .btn-primary {
     box-shadow: rgba(black, 0.1) 0 0 2px;
 
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
   }
 
   .alert-danger {
@@ -47,7 +47,7 @@
   }
 
   .remember-me {
-    font-size: 0.95rem;
+    font-size: 0.8125rem;
     line-height: 1.5;
 
     padding-left: 0;
