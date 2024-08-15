@@ -1,6 +1,6 @@
 {
   "name": "trestle-auth",
-  "version": "0.5.0-pre2",
+  "version": "0.5.0",
   "description": "Authentication plugin for the Trestle admin framework",
   "repository": "https://github.com/TrestleAdmin/trestle-auth.git",
   "author": "Sam Pohlenz <sam@sampohlenz.com>",
