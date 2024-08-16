@@ -14,7 +14,7 @@ group :test do
   gem "sqlite3", "~> 1.4"
 end
 
-gem "rails", "~> 7.1.0"
+gem "rails", "~> 7.2.0"
 
 gem "devise"
 gem "cancancan"
