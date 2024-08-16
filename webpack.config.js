@@ -7,7 +7,7 @@ const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 module.exports = {
   mode: 'production',
   entry: {
-    bundle: path.resolve(__dirname, 'frontend/index.scss'),
+    login: path.resolve(__dirname, 'frontend/index.scss'),
     userbox: path.resolve(__dirname, 'frontend/userbox.scss')
   },
   output: {
@@ -35,7 +35,14 @@ module.exports = {
               }
             }
           },
-          { loader: 'sass-loader' }
+          {
+            loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                quietDeps: true
+              }
+            }
+          }
         ]
       }
     ]
