@@ -32,11 +32,15 @@ module Trestle
         end
 
         def generate_account
-          generate "trestle:auth:account", model, *("--devise" if devise?) unless options[:skip_account]
+          generate "trestle:auth:account", model, *("--devise" if devise?) unless skip_account?
         end
 
         def devise?
           options[:devise]
+        end
+
+        def skip_account?
+          options[:skip_account]
         end
 
         def configuration_template

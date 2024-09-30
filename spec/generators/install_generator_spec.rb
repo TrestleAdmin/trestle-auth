@@ -44,6 +44,18 @@ describe Trestle::Auth::Generators::InstallGenerator, type: :generator do
         expect(generator(generator_params)).not_to receive(:generate).with("trestle:auth:account", "Administrator")
         run_generator generator_params
       end
+
+      describe "the generated files" do
+        before do
+          run_generator generator_params
+        end
+
+        describe "the Trestle configuration" do
+          subject { file("config/initializers/trestle.rb") }
+
+          it { is_expected.to contain "# config.auth.user_admin = -> { :\"auth/account\" }" }
+        end
+      end
     end
 
     describe "the generated files" do
@@ -87,6 +99,18 @@ describe Trestle::Auth::Generators::InstallGenerator, type: :generator do
       it "does not generate an account resource" do
         expect(generator(generator_params)).not_to receive(:generate).with("trestle:auth:account", "User", "--devise")
         run_generator generator_params
+      end
+
+      describe "the generated files" do
+        before do
+          run_generator generator_params
+        end
+
+        describe "the Trestle configuration" do
+          subject { file("config/initializers/trestle.rb") }
+
+          it { is_expected.to contain "# config.auth.user_admin = -> { :\"auth/account\" }" }
+        end
       end
     end
 
