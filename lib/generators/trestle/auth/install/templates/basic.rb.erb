@@ -11,7 +11,7 @@ config.auth.user_class = -> { <%= model %> }
 
 # Specify the Trestle admin for managing the current user (My Account).
 #
-config.auth.user_admin = -> { :"auth/account" }
+<% if skip_account? %># <% end %>config.auth.user_admin = -> { :"auth/account" }
 
 # Specify the parameter (along with a password) to be used to
 # authenticate an administrator. Defaults to :email.

@@ -18,7 +18,7 @@ module Trestle
         end
 
         def insert_configuration
-          inject_into_file "config/initializers/trestle.rb", before: /^end/ do
+          inject_into_file "config/initializers/trestle.rb", before: /end(?!.*end.*)/m do
             format_configuration(template_content(configuration_template))
           end
         end
@@ -28,15 +28,19 @@ module Trestle
         end
 
         def generate_admin
-          generate "trestle:auth:admin", model, ("--devise" if devise?)
+          generate "trestle:auth:admin", model, *("--devise" if devise?)
         end
 
         def generate_account
-          generate "trestle:auth:account", model, ("--devise" if devise?) unless options[:skip_account]
+          generate "trestle:auth:account", model, *("--devise" if devise?) unless skip_account?
         end
 
         def devise?
           options[:devise]
+        end
+
+        def skip_account?
+          options[:skip_account]
         end
 
         def configuration_template
