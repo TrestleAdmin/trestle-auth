@@ -28,11 +28,11 @@ module Trestle
         end
 
         def generate_admin
-          generate "trestle:auth:admin", model, ("--devise" if devise?)
+          generate "trestle:auth:admin", model, *("--devise" if devise?)
         end
 
         def generate_account
-          generate "trestle:auth:account", model, ("--devise" if devise?) unless options[:skip_account]
+          generate "trestle:auth:account", model, *("--devise" if devise?) unless options[:skip_account]
         end
 
         def devise?
