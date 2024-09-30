@@ -132,4 +132,29 @@ describe Trestle::Auth::Generators::InstallGenerator, type: :generator do
       end
     end
   end
+
+  context "when the existing Trestle configuration is improperly indented" do
+    let(:configuration) do
+      <<~EOF
+        Trestle.configure do |config|
+        config.menu do
+        end
+          end
+      EOF
+    end
+
+    describe "the generated files" do
+      before do
+        run_generator generator_params
+      end
+
+      describe "the Trestle configuration" do
+        subject { file("config/initializers/trestle.rb") }
+
+        it { is_expected.to have_correct_syntax }
+        it { is_expected.to contain "# == Authentication Options" }
+        it { is_expected.not_to contain /config.menu do\n\s*# == Authentication Options/ }
+      end
+    end
+  end
 end

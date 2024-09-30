@@ -18,7 +18,7 @@ module Trestle
         end
 
         def insert_configuration
-          inject_into_file "config/initializers/trestle.rb", before: /^end/ do
+          inject_into_file "config/initializers/trestle.rb", before: /end(?!.*end.*)/m do
             format_configuration(template_content(configuration_template))
           end
         end
