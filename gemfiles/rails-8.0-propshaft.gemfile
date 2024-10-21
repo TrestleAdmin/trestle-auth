@@ -7,7 +7,7 @@ group :test do
   gem "capybara"
 end
 
-gem "rails", "~> 8.0.0.beta1"
+gem "rails", "~> 8.0.0.rc1"
 gem "propshaft"
 gem "sqlite3"
 gem "devise"
